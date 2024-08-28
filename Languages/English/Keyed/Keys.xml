@@ -20,5 +20,5 @@
 	<VAEI_HighSanity>High sanity: {0}</VAEI_HighSanity>
 	<VAEI_AnomalyBodypart>Anomalous body part ({0}): {1}</VAEI_AnomalyBodypart>
 	<VAEI_BeingInLabyrinth>Being in labyrinth: {0}</VAEI_BeingInLabyrinth>
-	<VAEI_BeingInUnnaturalDarkness>Being in the darkness</VAEI_BeingInUnnaturalDarkness>
+	<VAEI_BeingInUnnaturalDarkness>Being in the darkness: {0}</VAEI_BeingInUnnaturalDarkness>
 </LanguageData>
