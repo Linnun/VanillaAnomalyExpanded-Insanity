@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+  
+  <TraitDef>
+    <defName>VAEI_Inhumanized</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>inhumanized</label>
+        <description>{PAWN_nameDef} text.todo</description>
+		<statOffsets>
+			<VAEI_SanityGainPerDay>-0.01</VAEI_SanityGainPerDay>
+		</statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+  
+</Defs>

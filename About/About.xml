@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Vanilla Anomaly Expanded - Sanity</name>
+	<name>Vanilla Anomaly Expanded - Insanity</name>
 	<author>Oskar Potocki, Taranchuk</author>
 	<supportedVersions>
 		<li>1.5</li>
 	</supportedVersions>
 	<modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
-	<packageId>VanillaExpanded.VAnomalyESanity</packageId>
+	<packageId>VanillaExpanded.VAnomalyEInsanity</packageId>
 	<modDependencies>
+		<li>
+			<packageId>Ludeon.RimWorld.Anomaly</packageId>
+			<displayName>Anomaly</displayName>
+			<steamWorkshopUrl>https://store.steampowered.com/app/2380740</steamWorkshopUrl>
+		</li>
 		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
@@ -22,6 +27,8 @@
 		</li>
 	</modDependencies>
 	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>Ludeon.RimWorld.Anomaly</li>
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 	</loadAfter>
 	<description>

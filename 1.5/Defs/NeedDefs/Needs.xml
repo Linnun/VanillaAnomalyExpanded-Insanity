@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+   <NeedDef>
+    <defName>VAEI_Sanity</defName>
+    <needClass>VAEInsanity.Need_Sanity</needClass>
+    <label>sanity</label>
+    <description>text.todo</description>
+    <minIntelligence>Humanlike</minIntelligence>
+    <major>true</major>
+    <baseLevel>1</baseLevel>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <listPriority>10</listPriority>
+  </NeedDef>
+
+  
+</Defs>

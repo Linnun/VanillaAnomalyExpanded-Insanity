@@ -89,7 +89,6 @@
 	  <li>unsettlingsubject->people waking up with knowledge of a language they never learned, speaking fluently in their sleep</li>
 	  <li>unsettlingsubject->the recurring appearance of unknown figures in the background of photographs taken at colony celebrations</li>
 </rulesStrings>
-    </rulesStrings>
     </logRulesInitiator>
   </InteractionDef>
   
@@ -219,6 +218,7 @@
 	<logRulesInitiator>
        <include>
         <li>DarkDialogue</li>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">PersonalCharacteristicsCube</li>
       </include>
     <rulesStrings>
       <li>r_logentry->[INITIATOR_nameDef] [twistedlyComplimented] [RECIPIENT_nameDef]'s [characteristic], comparing it to [subjectInsane].</li>
@@ -239,9 +239,6 @@
       <li>twistedlyComplimented->macabrely verbalized appreciation for</li>
       <li>twistedlyComplimented->spookily said good things about</li>
     </rulesStrings>
-    <include>
-      <li MayRequire="Ludeon.RimWorld.Anomaly">PersonalCharacteristicsCube</li>
-    </include>
   </logRulesInitiator>
   </InteractionDef>
   

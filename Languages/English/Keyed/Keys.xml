@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<VAEI_Sanity>Sanity</VAEI_Sanity>
+	<VAEI_SanityLetterDesc>{PAWN_nameDef}’s sanity has been tested by recent events. The sanity level of your colonists can now be seen on the Needs tab.</VAEI_SanityLetterDesc>
+	<VAEI_SanityLossMessage>{PAWN_nameDef} has lost sanity due to {0}. {PAWN_nameDef}’s sanity is now {1}</VAEI_SanityLossMessage>
+	<VAEI_SanityGainMessage>{PAWN_nameDef} has gained sanity due to {0}. {PAWN_nameDef}’s sanity is now {1}</VAEI_SanityGainMessage>
+	<VAEI_PassiveEffects>Passive effects:</VAEI_PassiveEffects>
+	<VAEI_MostRecentEvents>Most recent effects:</VAEI_MostRecentEvents>
+	<VAEI_PassiveSanityGain>Passive sanity gain: {0} - {1}</VAEI_PassiveSanityGain>
+	<VEAI_AnomalyStudy>Studying anomaly</VEAI_AnomalyStudy>
+	<VEAI_ConsumedTwistedMeat>Eating twisted meat</VEAI_ConsumedTwistedMeat>
+	<VEAI_ConsumedTwistedMeatAsIngredient>Eating twisted meat as food ingredient</VEAI_ConsumedTwistedMeatAsIngredient>
+	<VAEI_SuppressingEntities>Suppressing entities</VAEI_SuppressingEntities>
+	<VAEI_OccultTeaching>Occult teaching by {PAWN_nameDef}</VAEI_OccultTeaching>
+	<VAEI_SanityRecord>{0} ago: {1}: {2}</VAEI_SanityRecord>
+	<VAEI_DisturbingInteraction>Disturbing {0} interaction with {PAWN_nameDef}</VAEI_DisturbingInteraction>
+	<VAEI_StatsReport_SanityGainPerDay>Sanity gain per day: {0}</VAEI_StatsReport_SanityGainPerDay>
+	<VAEI_LowSanity>Low sanity: {0}</VAEI_LowSanity>
+	<VAEI_HighSanity>High sanity: {0}</VAEI_HighSanity>
+	<VAEI_AnomalyBodypart>Anomalous body part ({0}): {1}</VAEI_AnomalyBodypart>
+	<VAEI_BeingInLabyrinth>Being in labyrinth: {0}</VAEI_BeingInLabyrinth>
+	<VAEI_BeingInUnnaturalDarkness>Being in the darkness</VAEI_BeingInUnnaturalDarkness>
+</LanguageData>
