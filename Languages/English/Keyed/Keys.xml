@@ -29,6 +29,7 @@
 	<VAEI_UsingThing>Using {0}</VAEI_UsingThing>
 	<VAEI_KillingThing>Killing {0}</VAEI_KillingThing>
 	<VAEI_ReadingTome>Reading tome</VAEI_ReadingTome>
-	<VAEI_WeKilledNociosphere>We killed nociosphere</VAEI_WeKilledNociosphere>
-	<VAEI_PitgateCollapsed>Pit gate collapsed</VAEI_PitgateCollapsed>
+	<VAEI_WeKilledNociosphere>Nociosphere being killed</VAEI_WeKilledNociosphere>
+	<VAEI_PitgateCollapsed>Pit gate being collapsing</VAEI_PitgateCollapsed>
+	<VAEI_Attending>Attending {0}</VAEI_Attending>
 </LanguageData>

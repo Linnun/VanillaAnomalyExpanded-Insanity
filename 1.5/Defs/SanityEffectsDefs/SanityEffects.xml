@@ -72,7 +72,7 @@
 				<invokerEffect>-0.08</invokerEffect>
 			</li>
 		</psychicRitualEffects>
-		<disturbingInitiatorEffects> <!-- when the initiator is disturbing, recipient will get following sanity effects -->
+		<disturbingInitiatorEffects><!-- when the initiator is disturbing, recipient will get following sanity effects -->
 			<li>
 				<interaction>Chitchat</interaction>
 				<effect>-0.01</effect>
@@ -266,6 +266,61 @@
 				<effect>0.03</effect>
 			</li>
 		</killedThingsEffects>
+		<ritualEffects>
+			<li MayRequire="Ludeon.RimWorld.Royalty">
+				<ritual>AttendedSpeech</ritual>
+				<effect>0.0~0.01</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Royalty">
+				<ritual>AnimaTreeLinking</ritual>
+				<effect>0.0~0.01</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>AttendedFuneral</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>AttendedFuneralNoCorpse</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>CelebrationPartyDanceTech</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>CelebrationPartyDanceDrum</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>CelebrationSkyLanterns</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>DestroyConsumableBuilding_ChristmasTree</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>CelebratedDate</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<ritual>ConnectToTree</ritual>
+				<effect>0.0~0.01</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">
+				<ritual>ChildBirth</ritual>
+				<effect>0.0~0.05</effect>
+			</li>
+			<li MayRequire="OskarPotocki.VFE.Empire">
+				<ritual>VFEE_RoyalAddres_Outcome</ritual>
+				<effect>0.0~0.02</effect>
+			</li>
+			<li MayRequire="OskarPotocki.VFE.Empire">
+				<ritual>VFEE_GrandBall_Outcome</ritual>
+				<effect>0.0~0.01</effect>
+			</li>
+		</ritualEffects>
 	</VAEInsanity.SanityEffectsDef>
 
 </Defs>

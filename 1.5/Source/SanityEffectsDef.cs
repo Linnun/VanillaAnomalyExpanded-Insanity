@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace VAEInsanity
@@ -10,9 +11,14 @@ namespace VAEInsanity
         public float invokerEffect, targetEffect, chanterEffect;
     }
 
+    public class RitualEffect : SanityEffectBase
+    {
+        public RitualOutcomeEffectDef ritual;
+    }
+
     public abstract class SanityEffectBase
     {
-        public float effect;
+        public FloatRange effect;
         public string description;
     }
 
@@ -35,5 +41,6 @@ namespace VAEInsanity
         public List<InteractionEffect> disturbingInitiatorEffects, interactionEffects, nonDisturbingInitiatorEffects;
         public List<HediffEffect> hediffEffects;
         public List<ThingEffect> usedThingsEffects, killedThingsEffects;
+        public List<RitualEffect> ritualEffects;
     }
 }

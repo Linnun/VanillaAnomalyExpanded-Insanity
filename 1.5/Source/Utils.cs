@@ -23,7 +23,7 @@ namespace VAEInsanity
                 {
                     reason = effect.description;
                 }
-                need.GainSanity(effect.effect, reason);
+                need.GainSanity(effect.effect.RandomInRange, reason);
             }
         }
 

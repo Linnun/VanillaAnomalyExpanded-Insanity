@@ -52,7 +52,7 @@ namespace VAEInsanity
                             {
                                 if (effect.hediff == hediff.def)
                                 {
-                                    AddEffect(ref val, effect, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, effect.effect.ToStringPercentSigned("F2")));
+                                    AddEffect(ref val, effect, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, effect.effect.RandomInRange.ToStringPercentSigned("F2")));
                                 }
                             }
                         }
@@ -110,10 +110,11 @@ namespace VAEInsanity
 
         private static void AddEffect(ref float val, SanityEffectBase effect, StringBuilder explanation, string message)
         {
-            val += effect.effect;
+            var value = effect.effect.RandomInRange;
+            val += value;
             if (effect.description.NullOrEmpty() is false)
             {
-                message = effect.description + ": " + effect.effect.ToStringPercentSigned("F2");
+                message = effect.description + ": " + value.ToStringPercentSigned("F2");
             }
             explanation.AppendLine(message);
         }
