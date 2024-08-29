@@ -115,15 +115,18 @@ namespace VAEInsanity
         public void GainSanity(float value, string reason = null)
         {
             CurLevel += value;
-            if (reason != null && PawnUtility.ShouldSendNotificationAbout(pawn))
+            if (reason != null)
             {
-                if (value > 0 && value >= 0.05f)
+                if (shouldBeVisible && PawnUtility.ShouldSendNotificationAbout(pawn))
                 {
-                    Messages.Message("VAEI_SanityGainMessage".Translate(reason.UncapitalizeFirst(), CurLevel.ToStringPercent(), pawn.Named("PAWN")), pawn, MessageTypeDefOf.PositiveEvent);
-                }
-                else if (value < 0 && value <= -0.02f)
-                {
-                    Messages.Message("VAEI_SanityLossMessage".Translate(reason.UncapitalizeFirst(), CurLevel.ToStringPercent(), pawn.Named("PAWN")), pawn, MessageTypeDefOf.PositiveEvent);
+                    if (value > 0 && value >= 0.05f)
+                    {
+                        Messages.Message("VAEI_SanityGainMessage".Translate(reason.UncapitalizeFirst(), CurLevel.ToStringPercent(), pawn.Named("PAWN")), pawn, MessageTypeDefOf.PositiveEvent);
+                    }
+                    else if (value < 0 && value <= -0.02f)
+                    {
+                        Messages.Message("VAEI_SanityLossMessage".Translate(reason.UncapitalizeFirst(), CurLevel.ToStringPercent(), pawn.Named("PAWN")), pawn, MessageTypeDefOf.PositiveEvent);
+                    }
                 }
 
                 records.Add(new SanityChangeRecord

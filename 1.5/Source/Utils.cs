@@ -14,13 +14,18 @@ namespace VAEInsanity
             new Harmony("VAEInsanityMod").PatchAll();
         }
 
-        public static readonly HashSet<HediffDef> anomalyHediffs = new HashSet<HediffDef>
+        public static void SanityGain(this Pawn pawn, SanityEffectBase effect, string reason)
         {
-            HediffDefOf.FleshmassLung,
-            HediffDefOf.FleshmassStomach,
-            HediffDefOf.FleshWhip,
-            HediffDefOf.Tentacle
-        };
+            var need = pawn?.needs?.TryGetNeed<Need_Sanity>();
+            if (need != null)
+            {
+                if (effect.description.NullOrEmpty() is false)
+                {
+                    reason = effect.description;
+                }
+                need.GainSanity(effect.effect, reason);
+            }
+        }
 
         public static void SanityGain(this Pawn pawn, float sanityGain, string reason)
         {

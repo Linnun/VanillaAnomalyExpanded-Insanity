@@ -21,4 +21,8 @@
 	<VAEI_AnomalyBodypart>Anomalous body part ({0}): {1}</VAEI_AnomalyBodypart>
 	<VAEI_BeingInLabyrinth>Being in labyrinth: {0}</VAEI_BeingInLabyrinth>
 	<VAEI_BeingInUnnaturalDarkness>Being in the darkness: {0}</VAEI_BeingInUnnaturalDarkness>
+	<VAEI_InvokerEffect>{0} ritual invocation</VAEI_InvokerEffect>
+	<VAEI_TargetEffect>Targeted by {0} ritual</VAEI_TargetEffect>
+	<VAEI_ChanterEffect>Chanting during {0} ritual</VAEI_ChanterEffect>
+	<VAEI_BeingDuplicated>Being duplicated: {0}</VAEI_BeingDuplicated>
 </LanguageData>

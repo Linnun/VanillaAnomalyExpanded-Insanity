@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Verse;
 
@@ -10,7 +11,6 @@ namespace VAEInsanity
     {
         private const float LowSanityEffect = -0.01f;
         private const float HighSanityEffect = 0.01f;
-        private const float AnomalyProsthetic = -0.004f;
         private const float LabyrinthEffect = -0.01f;
         private const float UnnaturalDarknessEffect = -0.12f;
 
@@ -41,12 +41,41 @@ namespace VAEInsanity
             if (sanity != null)
             {
                 HandleSanityLevel(sanity.CurLevel, val, explanation);
+
                 foreach (var hediff in pawn.health.hediffSet.hediffs)
                 {
-                    if (Utils.anomalyHediffs.Contains(hediff.def))
+                    foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
                     {
-                        AddEffect(ref val, AnomalyProsthetic, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, AnomalyProsthetic.ToStringPercentSigned("F2")));
+                        if (def.hediffEffects != null)
+                        {
+                            foreach (var effect in def.hediffEffects)
+                            {
+                                if (effect.hediff == hediff.def)
+                                {
+                                    AddEffect(ref val, effect, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, effect.effect.ToStringPercentSigned("F2")));
+                                }
+                            }
+                        }
                     }
+                }
+
+                if (pawn.duplicate.duplicateOf != int.MinValue)
+                {
+                    var comp = Current.Game.GetComponent<GameComponent_PawnDuplicator>();
+                    if (comp.duplicates.TryGetValue(pawn.duplicate.duplicateOf, out var duplicates))
+                    {
+                        if (duplicates.pawns.Any(x => x.Dead is false && x != pawn))
+                        {
+                            AddEffect(ref val, -0.01f, explanation, 
+                                "VAEI_BeingDuplicated".Translate((-0.01f).ToStringPercentSigned("F2")));
+                        }
+                    }
+                }
+
+                if (Find.Anomaly.TryGetUnnaturalCorpseTrackerForHaunted(pawn, out var _))
+                {
+                    AddEffect(ref val, -0.01f, explanation,
+                        "VAEI_UnnaturalCorpse".Translate((-0.01f).ToStringPercentSigned("F2")));
                 }
 
                 if (pawn.Spawned)
@@ -55,6 +84,7 @@ namespace VAEInsanity
                     {
                         AddEffect(ref val, LabyrinthEffect, explanation, "VAEI_BeingInLabyrinth".Translate(LabyrinthEffect.ToStringPercentSigned("F2")));
                     }
+
                     if (GameCondition_UnnaturalDarkness.InUnnaturalDarkness(pawn))
                     {
                         AddEffect(ref val, UnnaturalDarknessEffect, explanation, 
@@ -76,6 +106,16 @@ namespace VAEInsanity
             {
                 AddEffect(ref val, HighSanityEffect, explanation, "VAEI_HighSanity".Translate(HighSanityEffect.ToStringPercentSigned("F2")));
             }
+        }
+
+        private static void AddEffect(ref float val, SanityEffectBase effect, StringBuilder explanation, string message)
+        {
+            val += effect.effect;
+            if (effect.description.NullOrEmpty() is false)
+            {
+                message = effect.description + ": " + effect.effect.ToStringPercentSigned("F2");
+            }
+            explanation.AppendLine(message);
         }
 
         private static void AddEffect(ref float val, float effect, StringBuilder explanation, string message)
