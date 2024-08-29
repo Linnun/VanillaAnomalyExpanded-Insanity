@@ -63,10 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompStudiable_Study_Patch.cs" />
+    <Compile Include="CompUsable_UsedBy_Patch.cs" />
     <Compile Include="DefsOf.cs" />
     <Compile Include="Hediff_PostAdd_Patch.cs" />
     <Compile Include="Hediff_PostRemoved_Patch.cs" />
     <Compile Include="JobDriver_ActivitySuppression_TrySuppress_Patch.cs" />
+    <Compile Include="Pawn_Kill_Patch.cs" />
+    <Compile Include="Pawn_Notify_UsedVerb_Patch.cs" />
+    <Compile Include="PitGate_BeginCollapsing_Patch.cs" />
+    <Compile Include="ReadingOutcomeDoerGainAnomalyResearch_OnReadingTick_Patch.cs" />
     <Compile Include="SanityEffectsDef.cs" />
     <Compile Include="LordToil_PsychicRitual_RitualCompleted_Patch.cs" />
     <Compile Include="Need_Sanity.cs" />

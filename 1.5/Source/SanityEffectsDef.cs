@@ -25,11 +25,15 @@ namespace VAEInsanity
     {
         public HediffDef hediff;
     }
-
+    public class ThingEffect : SanityEffectBase
+    {
+        public ThingDef thing;
+    }
     public class SanityEffectsDef : Def
     {
         public List<PsychicRitualEffect> psychicRitualEffects;
-        public List<InteractionEffect> disturbingInitiatorEffects, interactionEffects;
+        public List<InteractionEffect> disturbingInitiatorEffects, interactionEffects, nonDisturbingInitiatorEffects;
         public List<HediffEffect> hediffEffects;
+        public List<ThingEffect> usedThingsEffects, killedThingsEffects;
     }
 }

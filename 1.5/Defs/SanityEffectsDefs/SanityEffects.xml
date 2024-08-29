@@ -128,6 +128,52 @@
 				<effect>-0.025</effect>
 			</li>
 		</interactionEffects>
+		<nonDisturbingInitiatorEffects>
+			<li>
+				<interaction>Chitchat</interaction>
+				<effect>0.01</effect>
+			</li>
+			<li>
+				<interaction>DeepTalk</interaction>
+				<effect>0.02</effect>
+			</li>
+			<li>
+				<interaction>KindWords</interaction>
+				<effect>0.03</effect>
+			</li>
+			<li>
+				<interaction>Nuzzle</interaction>
+				<effect>0.02</effect>
+			</li>
+			<li>
+				<interaction>RomanceAttempt</interaction>
+				<effect>0.05</effect>
+			</li>
+			<li>
+				<interaction>MarriageProposal</interaction>
+				<effect>0.05</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">
+				<interaction>BabyPlay</interaction>
+				<effect>0.04</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<interaction>Counsel_Success</interaction>
+				<effect>0.05</effect>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<interaction>Reassure</interaction>
+				<effect>0.05</effect>
+			</li>
+			<li MayRequire="VanillaExpanded.VanillaSocialInteractionsExpanded">
+				<interaction>VSIE_Vent</interaction>
+				<effect>0.03</effect>
+			</li>
+			<li MayRequire="OskarPotocki.VFE.Empire">
+				<interaction>VFEE_RoyalGossip</interaction>
+				<effect>0.01</effect>
+			</li>
+		</nonDisturbingInitiatorEffects>
 		<hediffEffects>
 			<li>
 				<hediff>FleshmassLung</hediff>
@@ -156,6 +202,70 @@
 				<description>Cube withdrawal</description>
 			</li>
 		</hediffEffects>
+		<usedThingsEffects>
+			<li>
+				<thing>Apparel_ShardPsychicShockLance</thing>
+				<effect>-0.01</effect>
+			</li>
+			<li>
+				<thing>Apparel_ShardPsychicInsanityLance</thing>
+				<effect>-0.01</effect>
+			</li>
+			<li>
+				<thing>Apparel_BiomutationLance</thing>
+				<effect>-0.01</effect>
+			</li>
+			<li>
+				<thing>VoidsightSerum</thing>
+				<effect>-0.005</effect>
+			</li>
+			<li>
+				<thing>MetalbloodSerum</thing>
+				<effect>-0.005</effect>
+			</li>
+			<li>
+				<thing>MindNumbSerum</thing>
+				<effect>-0.005</effect>
+			</li>
+		</usedThingsEffects>
+		<killedThingsEffects>
+			<li>
+				<thing>Bulbfreak</thing>
+				<effect>0.01</effect>
+			</li>
+			<li>
+				<thing>Toughspike</thing>
+				<effect>0.004</effect>
+			</li>
+			<li>
+				<thing>Trispike</thing>
+				<effect>0.004</effect>
+			</li>
+			<li>
+				<thing>Fingerspike</thing>
+				<effect>0.002</effect>
+			</li>
+			<li>
+				<thing>Dreadmeld</thing>
+				<effect>0.05</effect>
+			</li>
+			<li>
+				<thing>Sightstealer</thing>
+				<effect>0.005</effect>
+			</li>
+			<li>
+				<thing>Revenant</thing>
+				<effect>0.03</effect>
+			</li>
+			<li>
+				<thing>Metalhorror</thing>
+				<effect>0.05</effect>
+			</li>
+			<li>
+				<thing>Noctol</thing>
+				<effect>0.03</effect>
+			</li>
+		</killedThingsEffects>
 	</VAEInsanity.SanityEffectsDef>
 
 </Defs>

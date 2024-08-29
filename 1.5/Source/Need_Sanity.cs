@@ -18,6 +18,8 @@ namespace VAEInsanity
         public bool shouldBeVisible;
         public override bool ShowOnNeedList => shouldBeVisible;
         public List<SanityChangeRecord> records = new List<SanityChangeRecord>();
+        public HashSet<Pawn> killedShamblers = new HashSet<Pawn>();
+
         public Need_Sanity(Pawn pawn) : base(pawn)
         {
         }
@@ -112,12 +114,12 @@ namespace VAEInsanity
             }
         }
 
-        public void GainSanity(float value, string reason = null)
+        public void GainSanity(float value, string reason = null, bool doMessage = true)
         {
             CurLevel += value;
             if (reason != null)
             {
-                if (shouldBeVisible && PawnUtility.ShouldSendNotificationAbout(pawn))
+                if (shouldBeVisible && PawnUtility.ShouldSendNotificationAbout(pawn) && doMessage)
                 {
                     if (value > 0 && value >= 0.05f)
                     {
@@ -174,9 +176,11 @@ namespace VAEInsanity
             base.ExposeData();
             Scribe_Values.Look(ref shouldBeVisible, "shouldBeVisible");
             Scribe_Collections.Look(ref records, "records", LookMode.Deep);
+            Scribe_Collections.Look(ref killedShamblers, "killedShamblers", LookMode.Reference);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 records ??= new List<SanityChangeRecord>();
+                killedShamblers ??= new HashSet<Pawn>();
             }
         }
     }

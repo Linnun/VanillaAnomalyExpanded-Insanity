@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using System.Collections.Generic;
 using Verse;
 
 namespace VAEInsanity
@@ -15,6 +14,7 @@ namespace VAEInsanity
             {
                 recipient.SanityGain(-0.005f, "VAEI_OccultTeaching".Translate(__instance.pawn.Named("PAWN")));
             }
+
             foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
             {
                 if (def.interactionEffects != null)
@@ -23,7 +23,7 @@ namespace VAEInsanity
                     {
                         if (effect.interaction == intDef)
                         {
-                            recipient.SanityGain(effect, "VAEI_DisturbingInteraction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
+                            recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
                         }
                     }
                 }
@@ -39,6 +39,22 @@ namespace VAEInsanity
                             if (effect.interaction == intDef)
                             {
                                 recipient.SanityGain(effect, "VAEI_DisturbingInteraction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+                {
+                    if (def.nonDisturbingInitiatorEffects != null)
+                    {
+                        foreach (var effect in def.nonDisturbingInitiatorEffects)
+                        {
+                            if (effect.interaction == intDef)
+                            {
+                                recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
                             }
                         }
                     }

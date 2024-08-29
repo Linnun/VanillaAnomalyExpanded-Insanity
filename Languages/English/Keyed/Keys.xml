@@ -15,6 +15,7 @@
 	<VAEI_OccultTeaching>Occult teaching by {PAWN_nameDef}</VAEI_OccultTeaching>
 	<VAEI_SanityRecord>{0} ago: {1}: {2}</VAEI_SanityRecord>
 	<VAEI_DisturbingInteraction>Disturbing {0} interaction with {PAWN_nameDef}</VAEI_DisturbingInteraction>
+	<VAEI_Interaction>{0} interaction with {PAWN_nameDef}</VAEI_Interaction>
 	<VAEI_StatsReport_SanityGainPerDay>Sanity gain per day: {0}</VAEI_StatsReport_SanityGainPerDay>
 	<VAEI_LowSanity>Low sanity: {0}</VAEI_LowSanity>
 	<VAEI_HighSanity>High sanity: {0}</VAEI_HighSanity>
@@ -25,4 +26,9 @@
 	<VAEI_TargetEffect>Targeted by {0} ritual</VAEI_TargetEffect>
 	<VAEI_ChanterEffect>Chanting during {0} ritual</VAEI_ChanterEffect>
 	<VAEI_BeingDuplicated>Being duplicated: {0}</VAEI_BeingDuplicated>
+	<VAEI_UsingThing>Using {0}</VAEI_UsingThing>
+	<VAEI_KillingThing>Killing {0}</VAEI_KillingThing>
+	<VAEI_ReadingTome>Reading tome</VAEI_ReadingTome>
+	<VAEI_WeKilledNociosphere>We killed nociosphere</VAEI_WeKilledNociosphere>
+	<VAEI_PitgateCollapsed>Pit gate collapsed</VAEI_PitgateCollapsed>
 </LanguageData>
