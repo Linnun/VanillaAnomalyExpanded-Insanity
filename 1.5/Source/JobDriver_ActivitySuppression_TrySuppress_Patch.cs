@@ -12,7 +12,7 @@ namespace VAEInsanity
         {
             __result.AddPreTickAction(delegate
             {
-                __instance.pawn.SanityGainContinuously(-0.00000016667f, "VAEI_SuppressingEntities".Translate());
+                __instance.pawn.SanityGainContinuously(-0.01f / GenDate.TicksPerDay, "VAEI_SuppressingEntities".Translate(__instance.ThingToSuppress.Label));
             });
         }
     }

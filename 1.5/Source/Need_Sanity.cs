@@ -116,6 +116,15 @@ namespace VAEInsanity
 
         public void GainSanity(float value, string reason = null, bool doMessage = true)
         {
+            if (value < 0)
+            {
+                value *= pawn.GetStatValue(DefsOf.VAEI_SanityLossMultiplier);
+            }
+            else if (value > 0)
+            {
+                value *= pawn.GetStatValue(DefsOf.VAEI_SanityGainMultiplier);
+            }
+            value *= pawn.GetStatValue(DefsOf.VAEI_SanityMultiplier);
             CurLevel += value;
             if (reason != null)
             {

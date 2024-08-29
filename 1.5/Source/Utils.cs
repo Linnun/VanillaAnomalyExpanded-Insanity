@@ -48,7 +48,7 @@ namespace VAEInsanity
                 }
                 else
                 {
-                    need.GainSanity(sanityGain, reason);
+                    need.GainSanity(sanityGain, reason, doMessage: false);
                 }
             }
         }

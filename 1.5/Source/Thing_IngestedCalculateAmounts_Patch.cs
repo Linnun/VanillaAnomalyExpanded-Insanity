@@ -11,7 +11,7 @@ namespace VAEInsanity
         {
             if (__instance.def == ThingDefOf.Meat_Twisted)
             {
-                float sanityChange = -(numTaken / 80f);
+                float sanityChange = -(numTaken / 80.0f) * 0.01f;
                 ingester.SanityGain(sanityChange, "VEAI_ConsumedTwistedMeat".Translate());
             }
             else if (__instance.TryGetComp<CompIngredients>() is CompIngredients compIngredients && compIngredients.ingredients.Contains(ThingDefOf.Meat_Twisted))

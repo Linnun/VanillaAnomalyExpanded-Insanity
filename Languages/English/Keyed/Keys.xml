@@ -8,7 +8,7 @@
 	<VAEI_PassiveEffects>Passive effects:</VAEI_PassiveEffects>
 	<VAEI_MostRecentEvents>Most recent effects:</VAEI_MostRecentEvents>
 	<VAEI_PassiveSanityGain>Passive sanity gain: {0} - {1}</VAEI_PassiveSanityGain>
-	<VEAI_AnomalyStudy>Studying anomaly</VEAI_AnomalyStudy>
+	<VEAI_AnomalyStudy>Studying {0}</VEAI_AnomalyStudy>
 	<VEAI_ConsumedTwistedMeat>Eating twisted meat</VEAI_ConsumedTwistedMeat>
 	<VEAI_ConsumedTwistedMeatAsIngredient>Eating twisted meat as food ingredient</VEAI_ConsumedTwistedMeatAsIngredient>
 	<VAEI_SuppressingEntities>Suppressing entities</VAEI_SuppressingEntities>
@@ -32,4 +32,5 @@
 	<VAEI_WeKilledNociosphere>Nociosphere being killed</VAEI_WeKilledNociosphere>
 	<VAEI_PitgateCollapsed>Pit gate being collapsing</VAEI_PitgateCollapsed>
 	<VAEI_Attending>Attending {0}</VAEI_Attending>
+	<VAEI_Meditating>Meditating</VAEI_Meditating>
 </LanguageData>

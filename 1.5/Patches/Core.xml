@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/HediffDef[defName = "PsychiteTeaHigh"]/stages/li/statFactors</xpath>
+		<value>
+			<VAEI_SanityMultiplier>2</VAEI_SanityMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName = "TooSmart"]/degreeDatas/li/statOffsets</xpath>
+		<value>
+			<VAEI_SanityLossMultiplier>-0.75</VAEI_SanityLossMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Psychopath"]/degreeDatas/li/statFactors</xpath>
+		<value>
+			<VAEI_SanityMultiplier>0.5</VAEI_SanityMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Nerves"]/degreeDatas/li[label="iron-willed"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityLossMultiplier>-0.50</VAEI_SanityLossMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Nerves"]/degreeDatas/li[label="steadfast"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityLossMultiplier>-0.25</VAEI_SanityLossMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Nerves"]/degreeDatas/li[label="nervous"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityGainMultiplier>-0.25</VAEI_SanityGainMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Nerves"]/degreeDatas/li[label="volatile"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityGainMultiplier>-0.50</VAEI_SanityGainMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[label="neurotic"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityLossMultiplier>0.15</VAEI_SanityLossMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/TraitDef[defName="Neurotic"]/degreeDatas/li[label="very neurotic"]/statOffsets</xpath>
+		<value>
+			<VAEI_SanityMultiplier>0.30</VAEI_SanityMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/TraitDef[defName="TorturedArtist"]/degreeDatas/li/statOffsets</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/TraitDef[defName="TorturedArtist"]/degreeDatas/li</xpath>
+			<value>
+				<statOffsets>
+					<VAEI_SanityLossMultiplier>0.25</VAEI_SanityLossMultiplier>
+				</statOffsets>
+			</value>
+		</nomatch>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/TraitDef[defName="TorturedArtist"]/degreeDatas/li/statOffsets</xpath>
+			<value>
+				<VAEI_SanityLossMultiplier>0.25</VAEI_SanityLossMultiplier>
+			</value>
+		</match>
+	</Operation>
+</Patch>
