@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MentalBreakDef>
+    <defName>VAEI_Madness</defName>
+    <label>Madness</label>
+    <intensity>Major</intensity>
+    <baseCommonality>0</baseCommonality>
+    <workerClass>VAEInsanity.MentalBreakWorker_Madness</workerClass>
+    <mentalState>VAEI_Madness</mentalState>
+  </MentalBreakDef>
+
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>VAEI_Madness</defName>
+    <label>Madness</label>
+    <stateClass>VAEInsanity.MentalState_Madness</stateClass>
+    <category>Misc</category>
+    <nameColor>(0.65, 0.9, 0.93)</nameColor>
+    <baseInspectLine>Mental state: madness</baseInspectLine>
+    <beginLetter>{PAWN_nameDef} has lost the last connection to {PAWN_possessive} former self. {PAWN_possessive} regard for health, family, friendship, and love has been shattered by continuous exposure to the dark, corrupting psychic forces of the void.\n\n{PAWN_pronoun} will now enter a severe period of madness for several days as {PAWN_pronoun} struggles with {PAWN_possessive} altered mental state and the grim realization of the deepening nightmare. While there's a chance {PAWN_pronoun} might overcome this crisis and restore {PAWN_possessive} sanity, it's far more likely that {PAWN_pronoun} will be completely inhumanized.</beginLetter>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <downedCanDo>true</downedCanDo>
+    <recoverFromDowned>false</recoverFromDowned>
+    <recoverFromCollapsingExhausted>false</recoverFromCollapsingExhausted>
+    <inCaravanCanDo>true</inCaravanCanDo>
+    <unspawnedNotInCaravanCanDo>true</unspawnedNotInCaravanCanDo>
+    <blockInteractionInitiationExcept>
+      <li>Insult</li>
+      <li>Slight</li>
+      <li>VAEI_ViciousMockery</li>
+      <li>VAEI_Slander</li>
+      <li>VAEI_VoidSelfHarm</li>
+    </blockInteractionInitiationExcept>
+    <blockInteractionRecipientExcept>
+      <li>Insult</li>
+      <li>Slight</li>
+    </blockInteractionRecipientExcept>
+  </MentalStateDef>
+
+</Defs>

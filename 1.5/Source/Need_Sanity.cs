@@ -117,6 +117,7 @@ namespace VAEInsanity
         public void GainSanity(float value, string reason = null, bool doMessage = true)
         {
             value = PostProcess(value);
+            var oldValue = CurLevel;
             CurLevel += value;
             if (reason != null)
             {
@@ -139,6 +140,51 @@ namespace VAEInsanity
                     effect = value
                 });
             }
+
+            if (pawn.Inhumanized() is false && oldValue > 0 && CurLevel <= 0)
+            {
+                if (ModsConfig.IdeologyActive && pawn.Ideo.HasPrecept(PreceptDefOf.Inhumanizing_Required))
+                {
+                    pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.HumanityBreak, "VAEI_SanityLoss".Translate());
+                }
+                else
+                {
+                    pawn.mindState.mentalStateHandler.TryStartMentalState(DefsOf.VAEI_Madness, "VAEI_SanityLoss".Translate());
+                }
+            }
+        }
+        private const float LowSanityEffect = -0.01f;
+        private const float HighSanityEffect = 0.01f;
+        public void HandleSanityLevel(ref float val, StringBuilder explanation)
+        {
+            var currentSanityLevel = CurLevel;
+            if (currentSanityLevel <= 0.1f)
+            {
+                AddEffect(ref val, LowSanityEffect, explanation, "VAEI_LowSanity".Translate(LowSanityEffect.ToStringPercentSigned("F2")));
+            }
+            else if (currentSanityLevel >= 0.9f)
+            {
+                AddEffect(ref val, HighSanityEffect, explanation, "VAEI_HighSanity".Translate(HighSanityEffect.ToStringPercentSigned("F2")));
+            }
+        }
+
+        public void AddEffect(ref float val, SanityEffectBase effect, StringBuilder explanation, string message)
+        {
+            var value = effect.effect.RandomInRange;
+            value = PostProcess(value);
+            val += value;
+            if (effect.description.NullOrEmpty() is false)
+            {
+                message = effect.description + ": " + value.ToStringPercentSigned("F2");
+            }
+            explanation.AppendLine(message);
+        }
+
+        public void AddEffect(ref float val, float effect, StringBuilder explanation, string message)
+        {
+            effect = PostProcess(effect);
+            val += effect;
+            explanation.AppendLine(message);
         }
 
         private float PostProcess(float value)
@@ -171,7 +217,6 @@ namespace VAEInsanity
             {
                 GainSanity(valuePerInterval);
             }
-            Log.Message(pawn + " - " + this);
         }
 
         public override float CurLevel 

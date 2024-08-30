@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using LudeonTK;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,22 @@ namespace VAEInsanity
         static Utils()
         {
             new Harmony("VAEInsanityMod").PatchAll();
+        }
+
+        [DebugAction("Pawns", "Sanity +10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]
+        private static void SanityPlus10(Pawn p)
+        {
+            var need = p.needs.TryGetNeed<Need_Sanity>();
+            need.GainSanity(0.1f, "using DEV: Sanity +10%");
+            DebugActionsUtility.DustPuffFrom(p);
+        }
+
+        [DebugAction("Pawns", "Sanity -10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]
+        private static void SanityMinus10(Pawn p)
+        {
+            var need = p.needs.TryGetNeed<Need_Sanity>();
+            need.GainSanity(-0.1f, "using DEV: Sanity -10%");
+            DebugActionsUtility.DustPuffFrom(p);
         }
 
         public static void SanityGain(this Pawn pawn, SanityEffectBase effect, string reason)

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThoughtDef>
+		<defName>VAEI_VoidHarmed</defName>
+		<durationDays>3</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>void harmed</label>
+				<description>I have harmed myself for the void. I can feel the sweet embrace of darkness.</description>
+				<baseMoodEffect>1</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_MockedMood</defName>
+		<durationDays>2</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<nullifyingHediffs>
+			<li>Inhumanized</li>
+		</nullifyingHediffs>
+		<stages>
+			<li>
+				<label>mocked</label>
+				<description>My insecurities were mocked! What an evil person!</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+		</stages>
+		<thoughtToMake>VAEI_MockedMemory</thoughtToMake>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_MockedMemory</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
+		<durationDays>30</durationDays>
+		<stackLimit>300</stackLimit>
+		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>mocked</label>
+				<baseOpinionOffset>-20</baseOpinionOffset>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+
+	<ThoughtDef>
+		<defName>VAEI_VileSlanderMood</defName>
+		<durationDays>5</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<nullifyingHediffs>
+			<li>Inhumanized</li>
+		</nullifyingHediffs>
+		<stages>
+			<li>
+				<label>vile slander</label>
+				<description>I was accused of something absolutely vile! How could they say that?</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+		</stages>
+		<thoughtToMake>VAEI_VileSlanderMemory</thoughtToMake><!-- Linking to social memory thought -->
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_VileSlanderMemory</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
+		<durationDays>60</durationDays>
+		<stackLimit>300</stackLimit>
+		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>vile slander</label>
+				<baseOpinionOffset>-25</baseOpinionOffset>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+</Defs>

@@ -7,7 +7,7 @@
     <defName>VAEI_UnsettlingTalk</defName>
     <label>unsettling talk</label>
     <workerClass>InteractionWorker_DeepTalk</workerClass>
-    <symbol>Things/Mote/SpeechSymbols/UnsettlingTalk</symbol>
+    <symbol>SpeechSymbols/UnsettlingTalk</symbol>
     <initiatorThought>DeepTalk</initiatorThought>
     <initiatorXpGainSkill>Social</initiatorXpGainSkill>
     <initiatorXpGainAmount>10</initiatorXpGainAmount>
@@ -96,9 +96,9 @@
   <defName>VAEI_ViciousMockery</defName>
   <label>vicious mockery</label>
   <workerClass>InteractionWorker_Slight</workerClass>
-  <symbol>Things/Mote/SpeechSymbols/Mockery</symbol>
+  <symbol>SpeechSymbols/ViciousMockery</symbol>
   <socialFightBaseChance>0.055</socialFightBaseChance>
-  <recipientThought>VAEI_Mocked</recipientThought>
+  <recipientThought>VAEI_MockedMood</recipientThought>
   <logRulesInitiator>
     <rulesStrings>
       <li>r_logentry->[INITIATOR_nameDef] [visciouslymocked] [target] for [characteristic].</li>
@@ -134,9 +134,9 @@
   <defName>VAEI_Slander</defName>
   <label>slander</label>
   <workerClass>InteractionWorker_Insult</workerClass>
-  <symbol>Things/Mote/SpeechSymbols/Slander</symbol>
+  <symbol>SpeechSymbols/Slander</symbol>
   <socialFightBaseChance>0.1</socialFightBaseChance>
-  <recipientThought>VAEI_Slandered</recipientThought>
+  <recipientThought>VAEI_VileSlanderMood</recipientThought>
   <logRulesInitiator>
     <rulesStrings>
       <li>r_logentry->[INITIATOR_nameDef] spread false rumors about [target]'s [characteristic], damaging their reputation.</li>
@@ -213,7 +213,7 @@
     <defName>VAEI_TwistedWords</defName>
     <label>twisted words</label>
     <workerClass>InteractionWorker_KindWords</workerClass>
-    <symbol>Things/Mote/SpeechSymbols/TwistedWords</symbol>
+    <symbol>SpeechSymbols/TwistedWords</symbol>
     <recipientThought>KindWords</recipientThought>
 	<logRulesInitiator>
        <include>
@@ -245,8 +245,8 @@
   <InteractionDef>
     <defName>VAEI_VoidSelfHarm</defName>
     <label>void self-harm</label>
-    <workerClass>InteractionWorker_InhumanRambling</workerClass>
-    <symbol>Things/Mote/SpeechSymbols/VoidSelfHarm</symbol>
+    <workerClass>VAEInsanity.InteractionWorker_VoidSelfHarm</workerClass>
+    <symbol>SpeechSymbols/VoidSelfHarm</symbol>
     <ignoreTimeSinceLastInteraction>True</ignoreTimeSinceLastInteraction>
     <logRulesInitiator>
       <include>

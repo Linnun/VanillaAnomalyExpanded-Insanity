@@ -67,9 +67,13 @@
     <Compile Include="DefsOf.cs" />
     <Compile Include="Hediff_PostAdd_Patch.cs" />
     <Compile Include="Hediff_PostRemoved_Patch.cs" />
+    <Compile Include="InteractionWorker_VoidSelfHarm.cs" />
     <Compile Include="JobDriver_ActivitySuppression_TrySuppress_Patch.cs" />
+    <Compile Include="JobDriver_MadnessInteraction.cs" />
     <Compile Include="LordJob_Joinable_MarriageCeremony_WeddingSucceeded_Patch.cs" />
     <Compile Include="LordJob_Joinable_Party_ApplyOutcome_Patch.cs" />
+    <Compile Include="MentalBreakWorker_Madness.cs" />
+    <Compile Include="MentalState_Madness.cs" />
     <Compile Include="Pawn_Kill_Patch.cs" />
     <Compile Include="Pawn_Notify_UsedVerb_Patch.cs" />
     <Compile Include="PitGate_BeginCollapsing_Patch.cs" />
