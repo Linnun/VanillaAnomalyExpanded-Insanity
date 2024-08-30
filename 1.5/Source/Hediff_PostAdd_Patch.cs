@@ -9,10 +9,18 @@ namespace VAEInsanity
     {
         public static void Postfix(Hediff __instance, DamageInfo? dinfo)
         {
-            if (__instance.def == HediffDefOf.Inhumanized && __instance.pawn.RaceProps.Humanlike
-                && __instance.pawn.story.traits.HasTrait(DefsOf.VAEI_Inhumanized) is false)
+            if (__instance.pawn.RaceProps.Humanlike)
             {
-                __instance.pawn.story.traits.GainTrait(new Trait(DefsOf.VAEI_Inhumanized));
+                CheckAndAddTrait(__instance, HediffDefOf.Inhumanized, DefsOf.VAEI_Inhumanized);
+                CheckAndAddTrait(__instance, HediffDefOf.VoidTouched, DefsOf.VAEI_VoidTouched);
+            }
+        }
+
+        private static void CheckAndAddTrait(Hediff hediff, HediffDef requiredHediffDef, TraitDef traitToAdd)
+        {
+            if (hediff.def == requiredHediffDef && !hediff.pawn.story.traits.HasTrait(traitToAdd))
+            {
+                hediff.pawn.story.traits.GainTrait(new Trait(traitToAdd));
             }
         }
     }

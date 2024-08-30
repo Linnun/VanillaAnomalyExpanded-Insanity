@@ -11,7 +11,7 @@
 	<VEAI_AnomalyStudy>Studying {0}</VEAI_AnomalyStudy>
 	<VEAI_ConsumedTwistedMeat>Eating twisted meat</VEAI_ConsumedTwistedMeat>
 	<VEAI_ConsumedTwistedMeatAsIngredient>Eating twisted meat as food ingredient</VEAI_ConsumedTwistedMeatAsIngredient>
-	<VAEI_SuppressingEntities>Suppressing entities</VAEI_SuppressingEntities>
+	<VAEI_SuppressingEntities>Suppressing {0}</VAEI_SuppressingEntities>
 	<VAEI_OccultTeaching>Occult teaching by {PAWN_nameDef}</VAEI_OccultTeaching>
 	<VAEI_SanityRecord>{0} ago: {1}: {2}</VAEI_SanityRecord>
 	<VAEI_DisturbingInteraction>Disturbing {0} interaction with {PAWN_nameDef}</VAEI_DisturbingInteraction>
@@ -29,8 +29,9 @@
 	<VAEI_UsingThing>Using {0}</VAEI_UsingThing>
 	<VAEI_KillingThing>Killing {0}</VAEI_KillingThing>
 	<VAEI_ReadingTome>Reading tome</VAEI_ReadingTome>
-	<VAEI_WeKilledNociosphere>Nociosphere being killed</VAEI_WeKilledNociosphere>
-	<VAEI_PitgateCollapsed>Pit gate being collapsing</VAEI_PitgateCollapsed>
+	<VAEI_WeKilledNociosphere>the Nociosphere being killed</VAEI_WeKilledNociosphere>
+	<VAEI_PitgateCollapsed>the pit gate collapsing</VAEI_PitgateCollapsed>
 	<VAEI_Attending>Attending {0}</VAEI_Attending>
 	<VAEI_Meditating>Meditating</VAEI_Meditating>
+	<VAEI_VoidClosing>the Void closing</VAEI_VoidClosing>
 </LanguageData>

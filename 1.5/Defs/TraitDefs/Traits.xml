@@ -15,5 +15,18 @@
       </li>
     </degreeDatas>
   </TraitDef>
-  
+
+  <TraitDef>
+    <defName>VAEI_VoidTouched</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>void touched</label>
+        <description>{PAWN_nameDef} text.todo</description>
+		<statFactors>
+			<VAEI_SanityGainMultiplier>0.1</VAEI_SanityGainMultiplier>
+		</statFactors>
+      </li>
+    </degreeDatas>
+  </TraitDef>
 </Defs>

@@ -116,15 +116,7 @@ namespace VAEInsanity
 
         public void GainSanity(float value, string reason = null, bool doMessage = true)
         {
-            if (value < 0)
-            {
-                value *= pawn.GetStatValue(DefsOf.VAEI_SanityLossMultiplier);
-            }
-            else if (value > 0)
-            {
-                value *= pawn.GetStatValue(DefsOf.VAEI_SanityGainMultiplier);
-            }
-            value *= pawn.GetStatValue(DefsOf.VAEI_SanityMultiplier);
+            value = PostProcess(value);
             CurLevel += value;
             if (reason != null)
             {
@@ -149,6 +141,28 @@ namespace VAEInsanity
             }
         }
 
+        private float PostProcess(float value)
+        {
+            if (value < 0)
+            {
+                value *= pawn.GetStatValue(DefsOf.VAEI_SanityLossMultiplier);
+            }
+            else if (value > 0)
+            {
+                value *= pawn.GetStatValue(DefsOf.VAEI_SanityGainMultiplier);
+            }
+            value *= pawn.GetStatValue(DefsOf.VAEI_SanityMultiplier);
+            if (CurLevel + value > 1)
+            {
+                value = 1 - CurLevel;
+            }
+            else if (CurLevel + value < 0)
+            {
+                value = -CurLevel;
+            }
+            return value;
+        }
+
         public override void NeedInterval()
         {
             var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay);
@@ -157,6 +171,7 @@ namespace VAEInsanity
             {
                 GainSanity(valuePerInterval);
             }
+            Log.Message(pawn + " - " + this);
         }
 
         public override float CurLevel 
@@ -169,6 +184,10 @@ namespace VAEInsanity
                 {
                     Notify_LosingSanity();
                 }
+                else if (value >= 1)
+                {
+                    shouldBeVisible = false;
+                }
             }
         }
 
@@ -180,6 +199,7 @@ namespace VAEInsanity
                 Find.LetterStack.ReceiveLetter("VAEI_Sanity".Translate(), "VAEI_SanityLetterDesc".Translate(), LetterDefOf.NegativeEvent, pawn);
             }
         }
+
         public override void ExposeData()
         {
             base.ExposeData();

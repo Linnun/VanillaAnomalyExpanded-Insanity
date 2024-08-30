@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace VAEInsanity
@@ -8,13 +9,21 @@ namespace VAEInsanity
     {
         public static void Postfix(Hediff __instance)
         {
-            if (__instance.pawn.RaceProps.Humanlike && 
-                __instance.pawn.health.hediffSet.hediffs.Any((Hediff a) => a.def == __instance.def) is false)
+            if (__instance.pawn.RaceProps.Humanlike)
             {
-                var trait = __instance.pawn.story.traits.GetTrait(DefsOf.VAEI_Inhumanized);
+                CheckAndRemoveTrait(__instance, HediffDefOf.Inhumanized, DefsOf.VAEI_Inhumanized);
+                CheckAndRemoveTrait(__instance, HediffDefOf.VoidTouched, DefsOf.VAEI_VoidTouched);
+            }
+        }
+
+        private static void CheckAndRemoveTrait(Hediff hediff, HediffDef associatedHediffDef, TraitDef traitToRemove)
+        {
+            if (hediff.def == associatedHediffDef && !hediff.pawn.health.hediffSet.hediffs.Any(h => h.def == associatedHediffDef))
+            {
+                var trait = hediff.pawn.story.traits.GetTrait(traitToRemove);
                 if (trait != null)
                 {
-                    __instance.pawn.story.traits.RemoveTrait(trait);
+                    hediff.pawn.story.traits.RemoveTrait(trait);
                 }
             }
         }

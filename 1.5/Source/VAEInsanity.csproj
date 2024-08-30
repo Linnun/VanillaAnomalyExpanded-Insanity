@@ -83,6 +83,7 @@
     <Compile Include="StatPart_SanityNeedOffset.cs" />
     <Compile Include="Thing_IngestedCalculateAmounts_Patch.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="VoidAwakeningUtility_DisruptTheLink_Patch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
