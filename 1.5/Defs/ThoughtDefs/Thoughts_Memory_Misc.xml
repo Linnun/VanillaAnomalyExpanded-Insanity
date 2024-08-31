@@ -48,7 +48,6 @@
 		</stages>
 	</ThoughtDef>
 
-
 	<ThoughtDef>
 		<defName>VAEI_VileSlanderMood</defName>
 		<durationDays>5</durationDays>
@@ -64,7 +63,7 @@
 				<baseMoodEffect>-8</baseMoodEffect>
 			</li>
 		</stages>
-		<thoughtToMake>VAEI_VileSlanderMemory</thoughtToMake><!-- Linking to social memory thought -->
+		<thoughtToMake>VAEI_VileSlanderMemory</thoughtToMake>
 	</ThoughtDef>
 
 	<ThoughtDef>
@@ -82,4 +81,52 @@
 		</stages>
 	</ThoughtDef>
 
+	<ThoughtDef>
+		<defName>VAEI_SanityEffectWithoutInhumanized</defName>
+		<workerClass>VAEInsanity.ThoughtWorker_SanityEffectWithoutInhumanized</workerClass>
+		<stages>
+			<li>
+				<label>sanity affected</label>
+				<description>The world begins to bend at the edges; reality feels less certain.</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+			<li>
+				<label>sanity degraded</label>
+				<description>Things are slipping away, and whispers echo in the corners of my mind.</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+			<li>
+				<label>sanity crumbling</label>
+				<description>My grip loosens; shadows dance and the world spins uncontrollably.</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+			<li>
+				<label>sanity lost</label>
+				<description>I am adrift in the void, untethered from the anchors of reality and reason.</description>
+				<baseMoodEffect>-10</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_SanityEffectWithInhumanized</defName>
+		<workerClass>VAEInsanity.ThoughtWorker_SanityEffectWithInhumanized</workerClass>
+		<stages>
+			<li>
+				<label>sane thoughts</label>
+				<description>Clarity pierces like a knife. The mundane truth is painfully dull.</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+			<li>
+				<label>sane doubts</label>
+				<description>Doubt creeps in, questioning the chaos. Why does this clarity feel like chains?</description>
+				<baseMoodEffect>-3</baseMoodEffect>
+			</li>
+			<li>
+				<label>sane feelings</label>
+				<description>Feelings of normalcy gnaw at my mind, erasing the beautiful madness.</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

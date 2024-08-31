@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
@@ -77,7 +78,6 @@ namespace VAEInsanity
                             if (TryFindNewTarget())
                             {
                                 StartJob(DefsOf.VAEI_ViciousMockJob);
-                                Log.Message("Mocking " + pawnTarget);
                             }
                         }
                         else if (ticksToSland <= 0)
@@ -86,15 +86,15 @@ namespace VAEInsanity
                             if (TryFindNewTarget())
                             {
                                 StartJob(DefsOf.VAEI_SlanderJob);
-                                Log.Message("slading " + pawnTarget);
                             }
                         }
                         else if (ticksToSelfHarm <= 0)
                         {
                             ticksToSelfHarm = SetTicks(8f, 12);
-                            InteractionUtility.ImitateInteractionWithNoPawn(pawn, DefsOf.VAEI_VoidSelfHarm);
-                            InteractionWorker_VoidSelfHarm.DoSelfHarm(pawn);
-                            Log.Message("Self harming itself");
+                            if (VAEInsanityModSettings.selfHarmEnabled)
+                            {
+                                InteractionWorker_VoidSelfHarm.DoSelfHarm(pawn);
+                            }
                         }
                     }
                 }
@@ -111,7 +111,36 @@ namespace VAEInsanity
         public override void PostEnd()
         {
             base.PostEnd();
+            var actions = new List<(Action action, float chance)>();
+            actions.Add((delegate
+            {
+                pawn.health.AddHediff(HediffDefOf.Inhumanized);
+                Find.LetterStack.ReceiveLetter("VAEI_Inhumanized".Translate(pawn.Named("PAWN")), 
+                    "VAEI_InhumanizedDesc".Translate(pawn.Named("PAWN")), LetterDefOf.NegativeEvent, pawn);
+            
+            }, 0.66f));
+            actions.Add((delegate
+            {
+                pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOf.Catharsis);
+                pawn.needs.TryGetNeed<Need_Sanity>().GainSanity(0.1f, "VEAI_RecoveringFromMadness".Translate());
+                Find.LetterStack.ReceiveLetter("VAEI_Recovered".Translate(pawn.Named("PAWN")),
+                    "VAEI_RecoveredDesc".Translate(pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);
+            }, 0.24f));
+            if (VAEInsanityModSettings.selfHarmEnabled)
+            {
+                actions.Add((delegate
+                {
+                    pawn.health.AddHediff(HediffDefOf.Inhumanized);
+                    Find.LetterStack.ReceiveLetter("VAEI_Sacrificial".Translate(pawn.Named("PAWN")),
+                        "VAEI_SacrificialDesc".Translate(pawn.Named("PAWN")), LetterDefOf.ThreatBig, pawn);
+                    pawn.mindState.mentalStateHandler.TryStartMentalState(DefsOf.VAEI_Sacrificial);
+                }, 0.10f));
+            }
 
+            if (actions.TryRandomElementByWeight(x => x.chance, out var action))
+            {
+                action.action();
+            }
         }
 
         private bool TryFindNewTarget()

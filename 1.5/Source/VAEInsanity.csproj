@@ -67,6 +67,7 @@
     <Compile Include="DefsOf.cs" />
     <Compile Include="Hediff_PostAdd_Patch.cs" />
     <Compile Include="Hediff_PostRemoved_Patch.cs" />
+    <Compile Include="Hediff_Sacrificial.cs" />
     <Compile Include="InteractionWorker_VoidSelfHarm.cs" />
     <Compile Include="JobDriver_ActivitySuppression_TrySuppress_Patch.cs" />
     <Compile Include="JobDriver_MadnessInteraction.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="LordJob_Joinable_Party_ApplyOutcome_Patch.cs" />
     <Compile Include="MentalBreakWorker_Madness.cs" />
     <Compile Include="MentalState_Madness.cs" />
+    <Compile Include="MentalState_Sacrificial.cs" />
     <Compile Include="Pawn_Kill_Patch.cs" />
     <Compile Include="Pawn_Notify_UsedVerb_Patch.cs" />
     <Compile Include="PitGate_BeginCollapsing_Patch.cs" />
@@ -84,9 +86,14 @@
     <Compile Include="Need_Sanity.cs" />
     <Compile Include="Pawn_InteractionsTracker_TryInteractWith_Patch.cs" />
     <Compile Include="SanityChangeRecord.cs" />
+    <Compile Include="SanityFactor.cs" />
+    <Compile Include="StatPart_Sanity.cs" />
     <Compile Include="StatPart_SanityNeedOffset.cs" />
     <Compile Include="Thing_IngestedCalculateAmounts_Patch.cs" />
+    <Compile Include="ThoughtWorker_SanityEffectWithInhumanized.cs" />
+    <Compile Include="ThoughtWorker_SanityEffectWithoutInhumanized.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="VAEInsanityMod.cs" />
     <Compile Include="VoidAwakeningUtility_DisruptTheLink_Patch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
