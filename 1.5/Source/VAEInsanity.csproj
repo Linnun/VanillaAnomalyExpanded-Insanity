@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobDriver_VoidDrawing.cs" />
+    <Compile Include="JobGiver_ViciousMockery.cs" />
+    <Compile Include="MentalBreakWorker_ViciousMockeryAll.cs" />
     <Compile Include="MentalBreakWorker_VoidDrawing.cs" />
     <Compile Include="MentalState_VoidDrawing.cs" />
     <Compile Include="Patches\CompStudiable_Study_Patch.cs" />

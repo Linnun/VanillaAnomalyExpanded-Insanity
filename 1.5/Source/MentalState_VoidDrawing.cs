@@ -42,7 +42,7 @@ namespace VAEInsanity
                 {
                     pos = pawn.Position;
                 }
-                Job voidDrawingJob = JobMaker.MakeJob(DefsOf.VAEI_VoidDrawingJob, pawn.Position, pos);
+                Job voidDrawingJob = JobMaker.MakeJob(DefsOf.VAEI_VoidDrawingJob, pos);
                 pawn.jobs.StartJob(voidDrawingJob, JobCondition.InterruptForced);
             }
         }

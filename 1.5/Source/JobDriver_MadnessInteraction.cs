@@ -51,6 +51,14 @@ namespace VAEInsanity
                     {
                         state.lastInsultTicks = Find.TickManager.TicksGame;
                     }
+                    else if (pawn.MentalState is MentalState_InsultingSpree spree)
+                    {
+                        spree.lastInsultTicks = Find.TickManager.TicksGame;
+                        if (spree.target == Target)
+                        {
+                            spree.insultedTargetAtLeastOnce = true;
+                        }
+                    }
                 }
             });
         }
@@ -59,8 +67,10 @@ namespace VAEInsanity
         {
             Action action = delegate
             {
-                if (!(pawn.MentalState is MentalState_Madness mentalState_InsultingSpree) 
-                || Find.TickManager.TicksGame - mentalState_InsultingSpree.lastInsultTicks >= 1200)
+                var lastInsultTicks = pawn.MentalState is MentalState_Madness mentalState_InsultingSpree 
+                ? mentalState_InsultingSpree.lastInsultTicks
+                : (pawn.MentalState as MentalState_InsultingSpree).lastInsultTicks;
+                if (Find.TickManager.TicksGame - lastInsultTicks >= 1200)
                 {
                     pawn.jobs.curDriver.ReadyForNextToil();
                 }

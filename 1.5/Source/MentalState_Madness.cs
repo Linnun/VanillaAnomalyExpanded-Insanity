@@ -6,7 +6,6 @@ using Verse.AI;
 
 namespace VAEInsanity
 {
-
     [HotSwappable]
     public class MentalState_Madness : MentalState_WanderOwnRoom
     {
@@ -150,7 +149,7 @@ namespace VAEInsanity
             Scribe_Values.Look(ref ticksToSland, "ticksToSland", 0);
             Scribe_Values.Look(ref ticksToSelfHarm, "ticksToSelfHarm", 0);
             Scribe_References.Look(ref pawnTarget, "pawnTarget");
-            Scribe_Values.Look(ref lastInsultTicks, "lastInsultTicks", 0);
+            Scribe_Values.Look(ref lastInsultTicks, "lastInsultTicks", 0); 
         }
     }
 }

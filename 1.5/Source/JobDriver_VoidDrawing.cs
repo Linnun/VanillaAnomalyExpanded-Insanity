@@ -9,18 +9,13 @@ namespace VAEInsanity
     {
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            Log.Message("base.TargetA: " + base.TargetA);
-            if (pawn.Reserve(base.TargetA, job, 1, -1, null, errorOnFailed))
-            {
-                return pawn.Reserve(base.TargetB, job, 1, -1, null, errorOnFailed);
-            }
-            return false;
+            return pawn.Reserve(base.TargetA, job, 1, -1, null, errorOnFailed);
         }
 
         public override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOn(() => pawn.MentalState is not MentalState_VoidDrawing);
-            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
+            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.Touch);
             Toil toil = ToilMaker.MakeToil("MakeNewToils");
             toil.initAction = delegate
             {
@@ -29,14 +24,16 @@ namespace VAEInsanity
             toil.handlingFacing = true;
             toil.tickAction = delegate
             {
-                pawn.rotationTracker.FaceCell(base.TargetB.Cell);
+                pawn.rotationTracker.FaceCell(base.TargetA.Cell);
             };
             toil.AddFinishAction(delegate
             {
-                Log.Message("base.TargetB; " + base.TargetB);
-                FilthMaker.TryMakeFilth(base.TargetB.Cell, pawn.Map, DefsOf.VAEI_VoidDrawing);
+                FilthMaker.TryMakeFilth(base.TargetA.Cell, pawn.Map, DefsOf.VAEI_VoidDrawing);
                 var state = pawn.MentalState as MentalState_VoidDrawing;
-                state.SetNextDrawingTick();
+                if (state != null)
+                {
+                    state.SetNextDrawingTick();
+                }
             });
             toil.defaultCompleteMode = ToilCompleteMode.Delay;
             toil.defaultDuration = 300;

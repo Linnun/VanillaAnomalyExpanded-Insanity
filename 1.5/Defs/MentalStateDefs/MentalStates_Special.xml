@@ -61,4 +61,45 @@
 		<inCaravanCanDo>false</inCaravanCanDo>
 		<recoveryMtbDays>0.033</recoveryMtbDays>
 	</MentalStateDef>
+	
+  <MentalBreakDef>
+    <defName>VAEI_ViciousMockery</defName>
+    <mentalState>VAEI_ViciousMockery</mentalState>
+    <baseCommonality>0</baseCommonality>
+    <intensity>Minor</intensity>
+	<workerClass>VAEInsanity.MentalBreakWorker_ViciousMockeryAll</workerClass>
+  </MentalBreakDef>
+  
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>VAEI_ViciousMockery</defName>
+    <stateClass>MentalState_InsultingSpreeAll</stateClass>
+    <workerClass>MentalStateWorker_InsultingSpreeAll</workerClass>
+    <label>mockery spree</label>
+    <category>Malicious</category>
+    <colonistsOnly>true</colonistsOnly>
+    <blockInteractionInitiationExcept>
+      <li>Insult</li>
+      <li>VAEI_ViciousMockery</li>
+    </blockInteractionInitiationExcept>
+    <blockInteractionRecipientExcept>
+      <li>Insult</li>
+      <li>VAEI_ViciousMockery</li>
+    </blockInteractionRecipientExcept>
+    <blockRandomInteraction>true</blockRandomInteraction>
+    <requiredCapacities>
+        <li>Talking</li>
+    </requiredCapacities>
+    <minTicksBeforeRecovery>24000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>45000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.166</recoveryMtbDays>
+    <recoverFromSleep>true</recoverFromSleep>
+    <moodRecoveryThought>Catharsis</moodRecoveryThought>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.98,0.48,0.16)</nameColor>
+    <recoveryMessage>{0} is no longer on an mockery spree.</recoveryMessage>
+    <beginLetter>{0} is on an mockery spree.\n\n[PAWN_pronoun] will wander around, randomly mocking others.</beginLetter>
+    <beginLetterDef>NegativeEvent</beginLetterDef>
+    <baseInspectLine>Mental state: Mockery spree</baseInspectLine>
+    <allowBeatfire>true</allowBeatfire>
+  </MentalStateDef>
 </Defs>
