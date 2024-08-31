@@ -7,6 +7,7 @@ namespace VAEInsanity
     public class StatPart_Sanity : StatPart
     {
         public List<SanityFactor> factors;
+        public List<SanityOffset> offsets;
 
         public override void TransformValue(StatRequest req, ref float val)
         {
@@ -15,7 +16,9 @@ namespace VAEInsanity
                 Need_Sanity sanity = pawn.needs.TryGetNeed<Need_Sanity>();
                 if (sanity != null)
                 {
-                    val *= GetFactor(sanity.CurLevel);
+                    float factor = GetFactor(sanity.CurLevel);
+                    val *= factor;
+                    val += GetOffset(pawn, sanity.CurLevel);
                 }
             }
         }
@@ -27,11 +30,27 @@ namespace VAEInsanity
                 Need_Sanity sanity = pawn.needs.TryGetNeed<Need_Sanity>();
                 if (sanity != null)
                 {
-                    float factor = GetFactor(sanity.CurLevel);
+                    float curLevel = sanity.CurLevel;
+                    float factor = GetFactor(curLevel);
+                    float offset = GetOffset(pawn, curLevel);
+                    string explanation = "";
+
                     if (factor != 1f)
                     {
-                        return "VAEI_SanityFactorExplanation".Translate(factor.ToStringPercent());
+                        explanation += "VAEI_SanityFactorExplanation".Translate(curLevel.ToStringPercent(),
+                            factor.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Factor));
                     }
+
+                    if (offset != 0f)
+                    {
+                        if (!string.IsNullOrEmpty(explanation))
+                        {
+                            explanation += "\n";
+                        }
+                        explanation += "VAEI_SanityOffsetExplanation".Translate(curLevel.ToStringPercent(),
+                            offset.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Offset));
+                    }
+                    return explanation;
                 }
             }
             return null;
@@ -39,14 +58,48 @@ namespace VAEInsanity
 
         private float GetFactor(float sanityLevel)
         {
-            foreach (SanityFactor factor in factors)
+            if (factors is not null)
             {
-                if (sanityLevel >= factor.min && sanityLevel < factor.max)
+                foreach (SanityFactor factor in factors)
                 {
-                    return factor.factor;
+                    if (sanityLevel >= factor.min && sanityLevel < factor.max)
+                    {
+                        return factor.factor;
+                    }
                 }
             }
             return 1f;
         }
+
+        private float GetOffset(Pawn pawn, float sanityLevel)
+        {
+            if (offsets is not null)
+            {
+                foreach (SanityOffset offset in offsets)
+                {
+                    if (pawn.story.traits.HasTrait(DefsOf.VAEI_Inhumanized) == offset.inhumanized
+                        && sanityLevel >= offset.min && sanityLevel < offset.max)
+                    {
+                        return offset.offset;
+                    }
+                }
+            }
+            return 0f;
+        }
+    }
+
+    public class SanityFactor
+    {
+        public float min;
+        public float max;
+        public float factor;
+    }
+
+    public class SanityOffset
+    {
+        public float min;
+        public float max;
+        public float offset;
+        public bool inhumanized;
     }
 }

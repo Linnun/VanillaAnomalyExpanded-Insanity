@@ -68,6 +68,12 @@
     <Compile Include="Hediff_PostAdd_Patch.cs" />
     <Compile Include="Hediff_PostRemoved_Patch.cs" />
     <Compile Include="Hediff_Sacrificial.cs" />
+    <Compile Include="InteractionWorker_Insult_RandomSelectionWeight_Patch.cs" />
+    <Compile Include="InteractionWorker_SanityInsult.cs" />
+    <Compile Include="InteractionWorker_Slander.cs" />
+    <Compile Include="InteractionWorker_Slight_RandomSelectionWeight_Patch.cs" />
+    <Compile Include="InteractionWorker_TwistedWords.cs" />
+    <Compile Include="InteractionWorker_UnsettlingTalk.cs" />
     <Compile Include="InteractionWorker_VoidSelfHarm.cs" />
     <Compile Include="JobDriver_ActivitySuppression_TrySuppress_Patch.cs" />
     <Compile Include="JobDriver_MadnessInteraction.cs" />
@@ -86,7 +92,6 @@
     <Compile Include="Need_Sanity.cs" />
     <Compile Include="Pawn_InteractionsTracker_TryInteractWith_Patch.cs" />
     <Compile Include="SanityChangeRecord.cs" />
-    <Compile Include="SanityFactor.cs" />
     <Compile Include="StatPart_Sanity.cs" />
     <Compile Include="StatPart_SanityNeedOffset.cs" />
     <Compile Include="Thing_IngestedCalculateAmounts_Patch.cs" />

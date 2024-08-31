@@ -11,7 +11,8 @@ namespace VAEInsanity
         public static MentalStateDef VAEI_Madness, VAEI_Sacrificial;
         public static JobDef VAEI_ViciousMockJob, VAEI_SlanderJob;
         public static InteractionDef VAEI_ViciousMockery, VAEI_Slander, VAEI_VoidSelfHarm;
-        public static ThoughtDef VAEI_VoidHarmed;
+        public static ThoughtDef VAEI_VoidHarmed, VAEI_KindWordsQuestion, VAEI_Suspicious;
         public static HediffDef VAEI_SacrificialHediff;
+        public static InteractionDef DisturbingChat, KindWords, VAEI_TwistedWords, VAEI_UnsettlingTalk;
     }
 }

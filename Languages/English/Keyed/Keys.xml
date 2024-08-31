@@ -44,6 +44,7 @@
 	<VAEI_SacrificialDesc>{PAWN_nameDef}'s connection to humanity is broken. {PAWN_possessive} transformation has left {PAWN_possessive} detached from human sensibilities, no longer swayed by pain or social interactions, and indifferent to the aesthetics of beauty and the outdoors. {PAWN_possessive} mind, now attuned to the void, disregards most emotions, finding solace in void meditation and a mysterious, unyielding joy that permeates {PAWN_possessive} existence. Compelled by the dark calling, {PAWN_possessive} is now driven to end {PAWN_possessive} existence in a final act of sacrifice to the void.\n\n{PAWN_pronoun} has gained the inhumanized trait.\n\n{PAWN_nameDef} is now set on a path of self-destruction and will attempt to end their existence, however they can still be restrained and stopped if you arrest them in time.</VAEI_SacrificialDesc>
 	<VAEI_EnableSelfHarmContent>Enable self-harm content (sacrificial mental state, self harm interaction)</VAEI_EnableSelfHarmContent>
 	<VAEI_ModSettingsName>VAE - Insanity</VAEI_ModSettingsName>
-	<VAEI_SanityFactorExplanation>Sanity factor: {0}</VAEI_SanityFactorExplanation>
+	<VAEI_SanityFactorExplanation>Sanity ({0}): {1}</VAEI_SanityFactorExplanation>
+	<VAEI_SanityOffsetExplanation>Sanity ({0}): {1}</VAEI_SanityOffsetExplanation>
 
 </LanguageData>

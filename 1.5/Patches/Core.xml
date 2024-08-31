@@ -81,4 +81,73 @@
 			</value>
 		</match>
 	</Operation>
+	
+<Operation Class="PatchOperationConditional">
+    <xpath>/Defs/StatDef[defName="MentalBreakThreshold"]/parts</xpath>
+    <nomatch Class="PatchOperationAdd">
+        <xpath>/Defs/StatDef[defName="MentalBreakThreshold"]</xpath>
+        <value>
+            <parts>
+            </parts>
+        </value>
+    </nomatch>
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+    <xpath>/Defs/StatDef[defName="MentalBreakThreshold"]/parts</xpath>
+    <value>
+        <li Class="VAEInsanity.StatPart_Sanity">
+            <offsets>
+                <li>
+                    <min>0.75</min>
+                    <max>1.0</max>
+                    <offset>0.15</offset>
+                    <inhumanized>true</inhumanized>
+                </li>
+                <li>
+                    <min>0.50</min>
+                    <max>0.75</max>
+                    <offset>0.08</offset>
+                    <inhumanized>true</inhumanized>
+                </li>
+                <li>
+                    <min>0.25</min>
+                    <max>0.50</max>
+                    <offset>0.04</offset>
+                    <inhumanized>true</inhumanized>
+                </li>
+                <li>
+                    <min>0.0</min>
+                    <max>0.25</max>
+                    <offset>0.00</offset>
+                    <inhumanized>true</inhumanized>
+                </li>
+                <li>
+                    <min>0.75</min>
+                    <max>1.0</max>
+                    <offset>0.00</offset>
+                    <inhumanized>false</inhumanized>
+                </li>
+                <li>
+                    <min>0.50</min>
+                    <max>0.75</max>
+                    <offset>0.04</offset>
+                    <inhumanized>false</inhumanized>
+                </li>
+                <li>
+                    <min>0.25</min>
+                    <max>0.50</max>
+                    <offset>0.08</offset>
+                    <inhumanized>false</inhumanized>
+                </li>
+                <li>
+                    <min>0.0</min>
+                    <max>0.25</max>
+                    <offset>0.15</offset>
+                    <inhumanized>false</inhumanized>
+                </li>
+            </offsets>
+        </li>
+    </value>
+</Operation>
 </Patch>

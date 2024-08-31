@@ -6,12 +6,12 @@
   <InteractionDef>
     <defName>VAEI_UnsettlingTalk</defName>
     <label>unsettling talk</label>
-    <workerClass>InteractionWorker_DeepTalk</workerClass>
+    <workerClass>VAEInsanity.InteractionWorker_UnsettlingTalk</workerClass>
     <symbol>SpeechSymbols/UnsettlingTalk</symbol>
-    <initiatorThought>DeepTalk</initiatorThought>
+    <initiatorThought>VAEI_DeepTalkQuestion</initiatorThought>
     <initiatorXpGainSkill>Social</initiatorXpGainSkill>
     <initiatorXpGainAmount>10</initiatorXpGainAmount>
-    <recipientThought>DeepTalk</recipientThought>
+    <recipientThought>VAEI_DeepTalkQuestion</recipientThought>
     <logRulesInitiator>
     <rulesStrings>
       <li>r_logentry->[INITIATOR_nameDef] and [RECIPIENT_nameDef] [eerilytalkedabout] [unsettlingsubject].</li>
@@ -95,7 +95,7 @@
 <InteractionDef>
   <defName>VAEI_ViciousMockery</defName>
   <label>vicious mockery</label>
-  <workerClass>InteractionWorker_Slight</workerClass>
+  <workerClass>VAEInsanity.InteractionWorker_SanityInsult</workerClass>
   <symbol>SpeechSymbols/ViciousMockery</symbol>
   <socialFightBaseChance>0.055</socialFightBaseChance>
   <recipientThought>VAEI_MockedMood</recipientThought>
@@ -133,7 +133,7 @@
 <InteractionDef>
   <defName>VAEI_Slander</defName>
   <label>slander</label>
-  <workerClass>InteractionWorker_Insult</workerClass>
+  <workerClass>VAEInsanity.InteractionWorker_SanityInsult</workerClass>
   <symbol>SpeechSymbols/Slander</symbol>
   <socialFightBaseChance>0.1</socialFightBaseChance>
   <recipientThought>VAEI_VileSlanderMood</recipientThought>
@@ -212,9 +212,9 @@
   <InteractionDef>
     <defName>VAEI_TwistedWords</defName>
     <label>twisted words</label>
-    <workerClass>InteractionWorker_KindWords</workerClass>
+    <workerClass>VAEInsanity.InteractionWorker_TwistedWords</workerClass>
     <symbol>SpeechSymbols/TwistedWords</symbol>
-    <recipientThought>KindWords</recipientThought>
+    <recipientThought>VAEI_KindWordsQuestion</recipientThought>
 	<logRulesInitiator>
        <include>
         <li>DarkDialogue</li>

@@ -17,6 +17,7 @@
 
 	<ThoughtDef>
 		<defName>VAEI_MockedMood</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
 		<durationDays>2</durationDays>
 		<stackLimit>10</stackLimit>
 		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
@@ -50,6 +51,7 @@
 
 	<ThoughtDef>
 		<defName>VAEI_VileSlanderMood</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
 		<durationDays>5</durationDays>
 		<stackLimit>10</stackLimit>
 		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
@@ -77,6 +79,20 @@
 			<li>
 				<label>vile slander</label>
 				<baseOpinionOffset>-25</baseOpinionOffset>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_Suspicious</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
+		<durationDays>30</durationDays>
+		<stackLimit>300</stackLimit>
+		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
+		<stages>
+			<li>
+			<label>suspicious</label>
+			<baseOpinionOffset>-5</baseOpinionOffset>
 			</li>
 		</stages>
 	</ThoughtDef>
@@ -129,4 +145,53 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_KindWordsQuestion</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
+  <durationDays>20</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>kind words?</label>
+				<description>I think I’ve been bestowed with kind words. I think.</description>
+				<baseMoodEffect>+4</baseMoodEffect>
+			</li>
+		</stages>
+		<thoughtToMake>VAEI_KindWordsQuestionMemory</thoughtToMake>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_KindWordsQuestionMemory</defName>
+		<durationDays>20</durationDays>
+		<stackLimit>300</stackLimit>
+		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>kind words?</label>
+				<baseOpinionOffset>+10</baseOpinionOffset>
+			</li>
+		</stages>
+	</ThoughtDef>
+	
+	<ThoughtDef>
+		<defName>VAEI_DeepTalkQuestion</defName>
+		<thoughtClass>Thought_MemorySocial</thoughtClass>
+		<durationDays>20</durationDays>
+		<stackLimit>300</stackLimit>
+		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<nullifyingTraits>
+			<li>Psychopath</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>deep talk?</label>
+				<baseOpinionOffset>+15</baseOpinionOffset>
+			</li>
+		</stages>
+	</ThoughtDef>
+
 </Defs>
