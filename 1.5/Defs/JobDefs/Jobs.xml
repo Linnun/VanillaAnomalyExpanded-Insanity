@@ -12,5 +12,11 @@
 		<driverClass>VAEInsanity.JobDriver_Slander</driverClass>
 		<reportString>Slandering TargetA.</reportString>
 	</JobDef>
+
+	<JobDef>
+		<defName>VAEI_VoidDrawingJob</defName>
+		<driverClass>VAEInsanity.JobDriver_VoidDrawing</driverClass>
+		<reportString>Void drawing.</reportString>
+	</JobDef>
 	
 </Defs>

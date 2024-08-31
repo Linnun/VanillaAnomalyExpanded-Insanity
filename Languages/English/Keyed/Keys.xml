@@ -46,5 +46,6 @@
 	<VAEI_ModSettingsName>VAE - Insanity</VAEI_ModSettingsName>
 	<VAEI_SanityFactorExplanation>Sanity ({0}): {1}</VAEI_SanityFactorExplanation>
 	<VAEI_SanityOffsetExplanation>Sanity ({0}): {1}</VAEI_SanityOffsetExplanation>
-
+	<VAEI_ObservingVoidDrawings>Observing void drawings</VAEI_ObservingVoidDrawings>
+	
 </LanguageData>

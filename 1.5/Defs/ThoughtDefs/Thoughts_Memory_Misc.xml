@@ -194,4 +194,21 @@
 		</stages>
 	</ThoughtDef>
 
+	<ThoughtDef>
+		<defName>VAEI_VoidDrawings</defName>
+		<thoughtClass>Thought_MemoryObservation</thoughtClass>
+		<durationDays>1</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
+		<nullifyingHediffs>
+			<li>Inhumanized</li>
+		</nullifyingHediffs>
+		<stages>
+			<li>
+				<label>observed void drawings</label>
+				<description>I witnessed a very eerie drawing. It feels like it speaks to me.</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>
