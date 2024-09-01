@@ -75,6 +75,9 @@
 					<MentalBreakThreshold>0.12</MentalBreakThreshold>
 					<VAEI_SanityLossMultiplier>1</VAEI_SanityLossMultiplier>
 				</statOffsets>
+				<statFactors>
+					<CertaintyLossFactor MayRequire="Ludeon.RimWorld.Ideology">2.5</CertaintyLossFactor>
+				</statFactors>
 			</li>
 		</degreeDatas>
 	</TraitDef>

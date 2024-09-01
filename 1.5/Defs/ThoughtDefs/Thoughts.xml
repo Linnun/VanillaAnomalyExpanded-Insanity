@@ -224,7 +224,7 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-	
+
 	<ThoughtDef>
 		<defName>VAEI_Restrained</defName>
 		<thoughtClass>Thought_Situational</thoughtClass>
@@ -251,4 +251,28 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_DirtyRoom</defName>
+		<thoughtClass>Thought_Situational</thoughtClass>
+		<workerClass>VAEInsanity.ThoughtWorker_DirtyRoom</workerClass>
+		<stages>
+			<li>
+				<label>slightly dirty surroundings</label>
+				<description>The room I’m in is slightly dirty. It scares me.</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+			<li>
+				<label>dirty surroundings</label>
+				<description>The room I’m in is dirty. It repulses me.</description>
+				<baseMoodEffect>-10</baseMoodEffect>
+			</li>
+			<li>
+				<label>very dirty surroundings</label>
+				<description>The room I’m in is incredibly dirty. I need to leave it as soon as possible.</description>
+				<baseMoodEffect>-15</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
 </Defs>

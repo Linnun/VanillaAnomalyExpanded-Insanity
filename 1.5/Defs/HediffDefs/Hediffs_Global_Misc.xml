@@ -23,4 +23,44 @@
 		</stages>
 	</HediffDef>
 
+	<HediffDef>
+		<defName>VAEI_Focused</defName>
+		<label>focused</label>
+		<description>Extreme mental focus on the tasks at hand, greatly increasing the productivity.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>False</isBad>
+		<comps>
+			<li>
+				<compClass>VAEInsanity.HediffComp_CycleFocusDistracted</compClass>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statOffsets>
+					<WorkSpeedGlobal>0.50</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>VAEI_Distracted</defName>
+		<label>distracted</label>
+		<description>Severe loss of focus resulting in a greatly decreased work speed, caused by distractable trait.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>False</isBad>
+		<comps>
+			<li>
+				<compClass>VAEInsanity.HediffComp_CycleFocusDistracted</compClass>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<statOffsets>
+					<WorkSpeedGlobal>-0.75</WorkSpeedGlobal>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
 </Defs>

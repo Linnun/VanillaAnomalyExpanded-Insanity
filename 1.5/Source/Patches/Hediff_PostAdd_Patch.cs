@@ -27,7 +27,7 @@ namespace VAEInsanity
 
         private static void CheckAndAddTrait(Hediff hediff, HediffDef requiredHediffDef, TraitDef traitToAdd)
         {
-            if (hediff.def == requiredHediffDef && !hediff.pawn.story.traits.HasTrait(traitToAdd))
+            if (hediff.def == requiredHediffDef && !hediff.pawn.HasTrait(traitToAdd))
             {
                 hediff.pawn.story.traits.GainTrait(new Trait(traitToAdd));
             }

@@ -92,5 +92,27 @@ namespace VAEInsanity
             return false;
         }
 
+        public static bool HasTrait(this Pawn pawn, TraitDef traitDef)
+        {
+            if (traitDef != null && (pawn?.story?.traits?.HasTrait(traitDef) ?? false))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static HashSet<HediffDef> germaphobeImmuneTo = new HashSet<HediffDef>
+        {
+            HediffDefOf.Plague, DefsOf.Flu, DefsOf.Malaria
+        };
+
+        public static bool CanCatch(this Pawn pawn, HediffDef hediffDef)
+        {
+            if (pawn.HasTrait(DefsOf.VAEI_Germaphobe) && germaphobeImmuneTo.Contains(hediffDef))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

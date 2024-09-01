@@ -62,6 +62,7 @@
     <Publicize Include="Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HediffComp_CycleFocusDistracted.cs" />
     <Compile Include="JobDriver_VoidDrawing.cs" />
     <Compile Include="JobGiver_ViciousMockery.cs" />
     <Compile Include="MentalBreakWorker_ViciousMockeryAll.cs" />
@@ -70,12 +71,17 @@
     <Compile Include="Patches\CompStudiable_Study_Patch.cs" />
     <Compile Include="Patches\CompUsable_UsedBy_Patch.cs" />
     <Compile Include="DefsOf.cs" />
+    <Compile Include="Patches\HediffSet_AddDirect_Patch.cs" />
     <Compile Include="Patches\Hediff_PostAdd_Patch.cs" />
     <Compile Include="Patches\Hediff_PostRemoved_Patch.cs" />
     <Compile Include="Hediff_Sacrificial.cs" />
+    <Compile Include="Patches\ImmunityHandler_DiseaseContractChanceFactor_Patch.cs" />
+    <Compile Include="Patches\IncidentWorker_DiseaseHuman_PotentialVictimCandidates.cs" />
     <Compile Include="Patches\InteractionWorker_Insult_RandomSelectionWeight_Patch.cs" />
     <Compile Include="InteractionWorker_SanityInsult.cs" />
     <Compile Include="InteractionWorker_Slander.cs" />
+    <Compile Include="Patches\InteractionWorker_RomanceAttempt_RandomSelectionWeight_Patch.cs" />
+    <Compile Include="Patches\InteractionWorker_RomanceAttempt_SuccessChance_Patch.cs" />
     <Compile Include="Patches\InteractionWorker_Slight_RandomSelectionWeight_Patch.cs" />
     <Compile Include="InteractionWorker_TwistedWords.cs" />
     <Compile Include="InteractionWorker_UnsettlingTalk.cs" />
@@ -87,13 +93,17 @@
     <Compile Include="MentalState_Madness.cs" />
     <Compile Include="MentalState_Sacrificial.cs" />
     <Compile Include="Patches\Pawn_ApparelTracker_Wear_Patch.cs" />
+    <Compile Include="Patches\Pawn_HealthTracker_AddHediff_Patch.cs" />
     <Compile Include="Patches\Pawn_Kill_Patch.cs" />
     <Compile Include="Patches\Pawn_Notify_UsedVerb_Patch.cs" />
+    <Compile Include="Patches\Pawn_RelationsTracker_OpinionOf_Patch.cs" />
     <Compile Include="Patches\PitGate_BeginCollapsing_Patch.cs" />
     <Compile Include="Patches\ReadingOutcomeDoerGainAnomalyResearch_OnReadingTick_Patch.cs" />
     <Compile Include="Patches\RitualOutcomeEffectWorker_FromQuality_GetQuality_Patch.cs" />
     <Compile Include="Patches\PawnObserver_ObserveSurroundingThings_Patch.cs" />
     <Compile Include="Patches\PawnCapacityUtility_CalculateCapacityLevel_Patch.cs" />
+    <Compile Include="Patches\TraitSet_GainTrait_Patch.cs" />
+    <Compile Include="ThoughtWorker_DirtyRoom.cs" />
     <Compile Include="ThoughtWorker_Gagged.cs" />
     <Compile Include="ThoughtWorker_Restrained.cs" />
     <Compile Include="SanityEffectsDef.cs" />

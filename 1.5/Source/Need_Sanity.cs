@@ -102,8 +102,8 @@ namespace VAEInsanity
         public override void SetInitialLevel()
         {
             if (pawn.Faction == Faction.OfHoraxCult 
-                || pawn.story.traits.HasTrait(TraitDefOf.VoidFascination)
-                || pawn.story.traits.HasTrait(TraitDefOf.Occultist)
+                || pawn.HasTrait(TraitDefOf.VoidFascination)
+                || pawn.HasTrait(TraitDefOf.Occultist)
                 || pawn.Inhumanized())
             {
                 CurLevel = Rand.Range(0.0f, 0.15f);
@@ -241,7 +241,7 @@ namespace VAEInsanity
                             pawn.needs.mood.thoughts.memories.TryGainMemory(DefsOf.VAEI_Rehumanized);
                             pawn.health.RemoveHediff(inhumanized);
                             var rehumanizedTraits = DefDatabase<SanityEffectsDef>.AllDefs.SelectMany(x => x.rehumanizationTraits ?? new List<TraitDef>()).Distinct().ToList();
-                            rehumanizedTrait = rehumanizedTraits.Where(x => pawn.story.traits.HasTrait(x) is false).RandomElement();
+                            rehumanizedTrait = rehumanizedTraits.Where(x => pawn.HasTrait(x) is false).RandomElement();
                             var trait = new Trait(rehumanizedTrait);
                             pawn.story.traits.GainTrait(trait);
                             var traitName = trait.CurrentData.GetLabelFor(pawn);

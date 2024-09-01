@@ -77,7 +77,7 @@ namespace VAEInsanity
             {
                 foreach (SanityOffset offset in offsets)
                 {
-                    if (pawn.story.traits.HasTrait(DefsOf.VAEI_Inhumanized) == offset.inhumanized
+                    if (pawn.HasTrait(DefsOf.VAEI_Inhumanized) == offset.inhumanized
                         && sanityLevel >= offset.min && sanityLevel < offset.max)
                     {
                         return offset.offset;
