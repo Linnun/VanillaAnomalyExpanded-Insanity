@@ -63,10 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HediffComp_CycleFocusDistracted.cs" />
+    <Compile Include="HediffComp_MoodSwingCycle.cs" />
     <Compile Include="JobDriver_VoidDrawing.cs" />
     <Compile Include="JobGiver_ViciousMockery.cs" />
+    <Compile Include="MentalBreakWorker_JoinCult.cs" />
     <Compile Include="MentalBreakWorker_ViciousMockeryAll.cs" />
     <Compile Include="MentalBreakWorker_VoidDrawing.cs" />
+    <Compile Include="MentalState_JoinCult.cs" />
     <Compile Include="MentalState_VoidDrawing.cs" />
     <Compile Include="Patches\CompStudiable_Study_Patch.cs" />
     <Compile Include="Patches\CompUsable_UsedBy_Patch.cs" />
@@ -92,7 +95,10 @@
     <Compile Include="Patches\LordJob_Joinable_Party_ApplyOutcome_Patch.cs" />
     <Compile Include="MentalState_Madness.cs" />
     <Compile Include="MentalState_Sacrificial.cs" />
+    <Compile Include="Patches\PawnGroupKindWorker_GeneratePawns_Patch.cs" />
+    <Compile Include="Patches\PawnGroupMakerUtility_GeneratePawns.cs" />
     <Compile Include="Patches\Pawn_ApparelTracker_Wear_Patch.cs" />
+    <Compile Include="Patches\Pawn_ExitMap_Patch.cs" />
     <Compile Include="Patches\Pawn_HealthTracker_AddHediff_Patch.cs" />
     <Compile Include="Patches\Pawn_Kill_Patch.cs" />
     <Compile Include="Patches\Pawn_Notify_UsedVerb_Patch.cs" />
@@ -103,8 +109,10 @@
     <Compile Include="Patches\PawnObserver_ObserveSurroundingThings_Patch.cs" />
     <Compile Include="Patches\PawnCapacityUtility_CalculateCapacityLevel_Patch.cs" />
     <Compile Include="Patches\TraitSet_GainTrait_Patch.cs" />
+    <Compile Include="Patches\TraitSet_RemoveTrait_Patch.cs" />
     <Compile Include="ThoughtWorker_DirtyRoom.cs" />
     <Compile Include="ThoughtWorker_Gagged.cs" />
+    <Compile Include="ThoughtWorker_MoodSwing.cs" />
     <Compile Include="ThoughtWorker_Restrained.cs" />
     <Compile Include="SanityEffectsDef.cs" />
     <Compile Include="Patches\LordToil_PsychicRitual_RitualCompleted_Patch.cs" />

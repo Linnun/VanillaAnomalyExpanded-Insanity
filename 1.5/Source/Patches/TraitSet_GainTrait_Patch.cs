@@ -9,16 +9,24 @@ namespace VAEInsanity
     {
         public static void Postfix(Pawn ___pawn, Trait trait)
         {
-            Log.Message("trait: " + trait.def);
-            if (trait.def == DefsOf.VAEI_Distractable)
+            if (___pawn.HasTrait(trait.def))
             {
-                var def = Rand.Bool ? DefsOf.VAEI_Focused : DefsOf.VAEI_Distracted;
-                Hediff hediff = HediffMaker.MakeHediff(def, ___pawn);
-                ___pawn.health.AddHediff(hediff);
-                Log.Message("Added hediff: " + hediff + " - " +
-                    hediff.TryGetComp<HediffComp_CycleFocusDistracted>()
-                    + " - " + ___pawn.health.hediffSet.GetFirstHediffOfDef(def));
+                if (trait.def == DefsOf.VAEI_Distractable)
+                {
+                    var def = Rand.Bool ? DefsOf.VAEI_Focused : DefsOf.VAEI_Distracted;
+                    AddHediff(___pawn, def);
+                }
+                else if (trait.def == DefsOf.VAEI_MoodSwings)
+                {
+                    AddHediff(___pawn, DefsOf.VAEI_MoodSwing);
+                }
             }
+        }
+
+        private static void AddHediff(Pawn ___pawn, HediffDef def)
+        {
+            Hediff hediff = HediffMaker.MakeHediff(def, ___pawn);
+            ___pawn.health.AddHediff(hediff);
         }
     }
 }

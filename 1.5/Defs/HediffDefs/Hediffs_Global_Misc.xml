@@ -63,4 +63,27 @@
 		</stages>
 	</HediffDef>
 
+	<HediffDef>
+		<defName>VAEI_MoodSwing</defName>
+		<label>mood swing</label>
+		<description>This pawn is experiencing mood swings, rapidly shifting between feelings of joy and sadness.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li>
+				<compClass>VAEInsanity.HediffComp_MoodSwingCycle</compClass>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>VAEI_JoinedCult</defName>
+		<label>joined cult</label>
+		<description>.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
 </Defs>

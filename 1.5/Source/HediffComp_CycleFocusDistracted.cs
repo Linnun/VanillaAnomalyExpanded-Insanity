@@ -1,8 +1,8 @@
-﻿using RimWorld;
-using Verse;
+﻿using Verse;
 
 namespace VAEInsanity
 {
+
     public class HediffComp_CycleFocusDistracted : HediffComp
     {
         private int nextTransitionTick;
@@ -11,12 +11,6 @@ namespace VAEInsanity
         {
             base.CompPostMake();
             SetNextTransition();
-        }
-
-        public override void CompPostPostAdd(DamageInfo? dinfo)
-        {
-            base.CompPostPostAdd(dinfo);
-            Log.Message("Added " + this);
         }
 
         public override void CompPostTick(ref float severityAdjustment)
@@ -43,16 +37,10 @@ namespace VAEInsanity
             pawn.health.RemoveHediff(parent);
         }
 
-        public override void CompPostPostRemoved()
-        {
-            base.CompPostPostRemoved();
-            Log.Message("Removed " + this);
-        }
-
         public override void CompExposeData()
         {
             base.CompExposeData();
-            Scribe_Values.Look(ref nextTransitionTick, "nextTransitionTick");
+            Scribe_Values.Look(ref nextTransitionTick, "HediffComp_CycleFocusDistracted_nextTransitionTick");
         }
     }
 }

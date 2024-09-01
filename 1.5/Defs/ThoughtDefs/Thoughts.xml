@@ -275,4 +275,32 @@
 		</stages>
 	</ThoughtDef>
 
+	<ThoughtDef>
+		<defName>VAEI_MoodSwing</defName>
+		<thoughtClass>Thought_Situational</thoughtClass>
+		<workerClass>VAEInsanity.ThoughtWorker_MoodSwing</workerClass>
+		<stages>
+			<li>
+				<label>happy thoughts</label>
+				<description>I'm feeling a gentle happiness, like a quiet smile spreading through my day.</description>
+				<baseMoodEffect>+6</baseMoodEffect>
+			</li>
+			<li>
+				<label>very happy thoughts</label>
+				<description>I'm riding a wave of joy and positivity, feeling truly happy and content.</description>
+				<baseMoodEffect>+12</baseMoodEffect>
+			</li>
+			<li>
+				<label>sad thoughts</label>
+				<description>I'm feeling weighed down by a sadness that's hard to shake off.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+			<li>
+				<label>very sad thoughts</label>
+				<description>My heart feels crushed by an intense and deep sadness, almost too much to bear.</description>
+				<baseMoodEffect>-16</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
 </Defs>
