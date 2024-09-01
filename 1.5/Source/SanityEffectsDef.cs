@@ -42,5 +42,6 @@ namespace VAEInsanity
         public List<HediffEffect> hediffEffects;
         public List<ThingEffect> usedThingsEffects, killedThingsEffects;
         public List<RitualEffect> ritualEffects;
+        public List<TraitDef> rehumanizationTraits;
     }
 }

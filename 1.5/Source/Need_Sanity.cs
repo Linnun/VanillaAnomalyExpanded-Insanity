@@ -19,7 +19,7 @@ namespace VAEInsanity
         public override bool ShowOnNeedList => shouldBeVisible;
         public List<SanityChangeRecord> records = new List<SanityChangeRecord>();
         public HashSet<Pawn> killedShamblers = new HashSet<Pawn>();
-
+        public TraitDef rehumanizedTrait;
         public Need_Sanity(Pawn pawn) : base(pawn)
         {
         }
@@ -224,6 +224,7 @@ namespace VAEInsanity
             get => base.CurLevel;
             set
             {
+                var oldValue = base.CurLevel;
                 base.CurLevel = value;
                 if (value < 0.95f && shouldBeVisible is false)
                 {
@@ -232,6 +233,23 @@ namespace VAEInsanity
                 else if (value >= 1)
                 {
                     shouldBeVisible = false;
+                    if (oldValue < 1)
+                    {
+                        var inhumanized = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Inhumanized);
+                        if (inhumanized != null)
+                        {
+                            pawn.needs.mood.thoughts.memories.TryGainMemory(DefsOf.VAEI_Rehumanized);
+                            pawn.health.RemoveHediff(inhumanized);
+                            var rehumanizedTraits = DefDatabase<SanityEffectsDef>.AllDefs.SelectMany(x => x.rehumanizationTraits ?? new List<TraitDef>()).Distinct().ToList();
+                            rehumanizedTrait = rehumanizedTraits.Where(x => pawn.story.traits.HasTrait(x) is false).RandomElement();
+                            var trait = new Trait(rehumanizedTrait);
+                            pawn.story.traits.GainTrait(trait);
+                            var traitName = trait.CurrentData.GetLabelFor(pawn);
+                            var traitDesc = trait.CurrentData.description.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn).Resolve();
+                            Find.LetterStack.ReceiveLetter("VAEI_Rehumanized".Translate(pawn.Named("PAWN")), 
+                                "VAEI_RehumanizedDesc".Translate(traitName, traitDesc, pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);
+                        }
+                    }
                 }
             }
         }
@@ -251,6 +269,7 @@ namespace VAEInsanity
             Scribe_Values.Look(ref shouldBeVisible, "shouldBeVisible");
             Scribe_Collections.Look(ref records, "records", LookMode.Deep);
             Scribe_Collections.Look(ref killedShamblers, "killedShamblers", LookMode.Reference);
+            Scribe_Defs.Look(ref rehumanizedTrait, "rehumanizedTrait");
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 records ??= new List<SanityChangeRecord>();

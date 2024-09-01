@@ -238,4 +238,17 @@
 		</stages>
 	</ThoughtDef>
 
+	<ThoughtDef>
+		<defName>VAEI_Rehumanized</defName>
+		<thoughtClass>Thought_Memory</thoughtClass>
+		<durationDays>5</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>rehumanized</label>
+				<description>It’s so good to finally feel normal again. Well, mostly normal.</description>
+				<baseMoodEffect>+50</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

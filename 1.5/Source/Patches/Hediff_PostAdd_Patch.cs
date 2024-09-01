@@ -13,6 +13,15 @@ namespace VAEInsanity
             {
                 CheckAndAddTrait(__instance, HediffDefOf.Inhumanized, DefsOf.VAEI_Inhumanized);
                 CheckAndAddTrait(__instance, HediffDefOf.VoidTouched, DefsOf.VAEI_VoidTouched);
+                var sanity = __instance.pawn.needs.TryGetNeed<Need_Sanity>();
+                if (sanity?.rehumanizedTrait != null)
+                {
+                    var trait = __instance.pawn.story.traits.GetTrait(sanity.rehumanizedTrait);
+                    if (trait != null)
+                    {
+                        __instance.pawn.story.traits.RemoveTrait(trait);
+                    }
+                }
             }
         }
 

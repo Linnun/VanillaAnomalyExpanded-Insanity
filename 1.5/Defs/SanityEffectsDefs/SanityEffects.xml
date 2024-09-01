@@ -321,6 +321,13 @@
 				<effect>0.0~0.01</effect>
 			</li>
 		</ritualEffects>
+		<rehumanizationTraits>
+			<li>VAEI_Germaphobe</li>
+			<li>VAEI_Noncommittal</li>
+			<li>VAEI_Unstable</li>
+			<li>VAEI_Distractable</li>
+			<li>VAEI_MoodSwings</li>
+		</rehumanizationTraits>
 	</VAEInsanity.SanityEffectsDef>
 
 </Defs>
