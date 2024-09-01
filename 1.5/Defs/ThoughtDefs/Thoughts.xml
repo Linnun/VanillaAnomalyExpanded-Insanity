@@ -91,8 +91,8 @@
 		<stackLimitForSameOtherPawn>10</stackLimitForSameOtherPawn>
 		<stages>
 			<li>
-			<label>suspicious</label>
-			<baseOpinionOffset>-5</baseOpinionOffset>
+				<label>suspicious</label>
+				<baseOpinionOffset>-5</baseOpinionOffset>
 			</li>
 		</stages>
 	</ThoughtDef>
@@ -149,7 +149,7 @@
 	<ThoughtDef>
 		<defName>VAEI_KindWordsQuestion</defName>
 		<thoughtClass>Thought_MemorySocial</thoughtClass>
-  <durationDays>20</durationDays>
+		<durationDays>20</durationDays>
 		<stackLimit>10</stackLimit>
 		<stackedEffectMultiplier>0.9</stackedEffectMultiplier>
 		<stages>
@@ -175,7 +175,7 @@
 			</li>
 		</stages>
 	</ThoughtDef>
-	
+
 	<ThoughtDef>
 		<defName>VAEI_DeepTalkQuestion</defName>
 		<thoughtClass>Thought_MemorySocial</thoughtClass>
@@ -211,4 +211,31 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>VAEI_Gagged</defName>
+		<thoughtClass>Thought_Situational</thoughtClass>
+		<workerClass>VAEInsanity.ThoughtWorker_Gagged</workerClass>
+		<stages>
+			<li>
+				<label>gagged</label>
+				<description>Hmpff, huff hmphhhh</description>
+				<baseMoodEffect>-5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	
+	<ThoughtDef>
+		<defName>VAEI_Restrained</defName>
+		<thoughtClass>Thought_Situational</thoughtClass>
+		<workerClass>VAEInsanity.ThoughtWorker_Restrained</workerClass>
+		<stages>
+			<li>
+				<label>restrained</label>
+				<description>I want to take off this straitjacket! I can’t do anything!</description>
+				<baseMoodEffect>-10</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
 </Defs>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using RimWorld;
+using System.Linq;
 using Verse;
 using Verse.AI;
 
@@ -30,7 +31,7 @@ namespace VAEInsanity
 
         private void StartVoidDrawingJob()
         {
-            if (pawn.CurJobDef != DefsOf.VAEI_VoidDrawingJob)
+            if (pawn.CurJobDef != DefsOf.VAEI_VoidDrawingJob && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {
                 var pos = pawn.Position + pawn.Rotation.FacingCell;
                 if (GoodCell(pos) is false)

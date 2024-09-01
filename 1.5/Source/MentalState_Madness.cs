@@ -116,7 +116,7 @@ namespace VAEInsanity
                 Find.LetterStack.ReceiveLetter("VAEI_Recovered".Translate(pawn.Named("PAWN")),
                     "VAEI_RecoveredDesc".Translate(pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);
             }, 0.24f));
-            if (VAEInsanityModSettings.selfHarmEnabled)
+            if (VAEInsanityModSettings.selfHarmEnabled && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {
                 actions.Add((delegate
                 {

@@ -86,12 +86,16 @@
     <Compile Include="Patches\LordJob_Joinable_Party_ApplyOutcome_Patch.cs" />
     <Compile Include="MentalState_Madness.cs" />
     <Compile Include="MentalState_Sacrificial.cs" />
+    <Compile Include="Patches\Pawn_ApparelTracker_Wear_Patch.cs" />
     <Compile Include="Patches\Pawn_Kill_Patch.cs" />
     <Compile Include="Patches\Pawn_Notify_UsedVerb_Patch.cs" />
     <Compile Include="Patches\PitGate_BeginCollapsing_Patch.cs" />
     <Compile Include="Patches\ReadingOutcomeDoerGainAnomalyResearch_OnReadingTick_Patch.cs" />
     <Compile Include="Patches\RitualOutcomeEffectWorker_FromQuality_GetQuality_Patch.cs" />
     <Compile Include="Patches\PawnObserver_ObserveSurroundingThings_Patch.cs" />
+    <Compile Include="Patches\PawnCapacityUtility_CalculateCapacityLevel_Patch.cs" />
+    <Compile Include="ThoughtWorker_Gagged.cs" />
+    <Compile Include="ThoughtWorker_Restrained.cs" />
     <Compile Include="SanityEffectsDef.cs" />
     <Compile Include="Patches\LordToil_PsychicRitual_RitualCompleted_Patch.cs" />
     <Compile Include="Need_Sanity.cs" />

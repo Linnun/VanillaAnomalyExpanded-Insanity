@@ -69,5 +69,28 @@ namespace VAEInsanity
                 }
             }
         }
+
+        public static bool Wears(this Pawn pawn, ThingDef thingDef)
+        {
+            return pawn.Wears(thingDef, out _);
+        }
+
+        public static bool Wears(this Pawn pawn, ThingDef thingDef, out Apparel apparel)
+        {
+            apparel = null;
+            if (pawn?.apparel?.WornApparel != null)
+            {
+                foreach (var other in pawn.apparel.WornApparel)
+                {
+                    if (other.def == thingDef)
+                    {
+                        apparel = other;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }

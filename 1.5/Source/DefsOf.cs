@@ -14,6 +14,6 @@ namespace VAEInsanity
         public static ThoughtDef VAEI_VoidHarmed, VAEI_KindWordsQuestion, VAEI_Suspicious, VAEI_VoidDrawings;
         public static HediffDef VAEI_SacrificialHediff;
         public static InteractionDef DisturbingChat, KindWords, VAEI_TwistedWords, VAEI_UnsettlingTalk;
-        public static ThingDef VAEI_VoidDrawing;
+        public static ThingDef VAEI_VoidDrawing, VAEI_Apparel_Gag, VAEI_Apparel_StraitJacket;
     }
 }
