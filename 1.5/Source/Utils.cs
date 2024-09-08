@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using LudeonTK;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -13,6 +14,55 @@ namespace VAEInsanity
         static Utils()
         {
             new Harmony("VAEInsanityMod").PatchAll();
+            foreach (var def in DefDatabase<ThingDef>.AllDefs.Where(x => x.IsCorpse is false))
+            {
+                if (def.HasComp<CompActivity>())
+                {
+                    if (VAEInsanityModSettings.suppressingEntities.ContainsKey(def) is false)
+                    {
+                        VAEInsanityModSettings.suppressingEntities[def] = new SanityEffect(-0.01f);
+                    }
+                }
+                if (def.race != null && def.HasComp<CompStudiable>() && def.race.IsAnomalyEntity
+                    || def.HasComp<CompStudyUnlocks>())
+                {
+                    if (VAEInsanityModSettings.studyingEntities.ContainsKey(def) is false)
+                    {
+                        VAEInsanityModSettings.studyingEntities[def] = new SanityEffect(-0.01f);
+                    }
+                }
+            }
+
+            foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+            {
+                FillEffects(def.killedThingsEffects, VAEInsanityModSettings.killingEntities, ent => ent.thing, 
+                    ent => new SanityEffect(ent.effect.min));
+                FillEffects(def.disturbingInitiatorEffects, VAEInsanityModSettings.disturbingInitiatorEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
+                FillEffects(def.interactionEffects, VAEInsanityModSettings.interactionEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
+                FillEffects(def.nonDisturbingInitiatorEffects, VAEInsanityModSettings.nonDisturbingInitiatorEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
+                FillEffects(def.hediffEffects, VAEInsanityModSettings.hediffEffects, ent => ent.hediff, ent => new SanityEffect(ent.effect));
+                FillEffects(def.usedThingsEffects, VAEInsanityModSettings.usedThingsEffects, ent => ent.thing, ent => new SanityEffect(ent.effect));
+                FillEffects(def.ritualEffects, VAEInsanityModSettings.ritualEffects, ent => ent.ritual, ent => new SanityEffect(ent.effect));
+            }
+
+
+            void FillEffects<T, TKey>(List<T> effectList, Dictionary<TKey, SanityEffect> targetDict, Func<T, TKey> keySelector, Func<T, SanityEffect> valueSelector)
+            {
+                if (effectList != null)
+                {
+                    foreach (var effect in effectList)
+                    {
+                        var key = keySelector(effect);
+                        if (!targetDict.ContainsKey(key))
+                        {
+                            targetDict[key] = valueSelector(effect);
+                        }
+                    }
+                }
+            }
+
+            // Example usage:
+
         }
 
         [DebugAction("Pawns", "Sanity +10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]

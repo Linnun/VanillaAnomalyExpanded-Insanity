@@ -9,8 +9,11 @@ namespace VAEInsanity
     {
         public static void Postfix(CompStudiable __instance, Pawn studier, float anomalyKnowledgeAmount)
         {
-            float sanityChange = anomalyKnowledgeAmount * -0.01f;
-            studier.SanityGain(sanityChange, "VEAI_AnomalyStudy".Translate(__instance.parent.Label));
+            if (VAEInsanityModSettings.studyingEntities.TryGetValue(__instance.parent.def, out var option) && option.enabled)
+            {
+                float sanityChange = anomalyKnowledgeAmount * option.sanityValue.RandomInRange;
+                studier.SanityGain(sanityChange, "VEAI_AnomalyStudy".Translate(__instance.parent.Label));
+            }
         }
     }
 }

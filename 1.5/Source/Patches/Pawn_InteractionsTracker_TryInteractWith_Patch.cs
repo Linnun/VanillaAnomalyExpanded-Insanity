@@ -66,11 +66,6 @@ namespace VAEInsanity
         public static void Postfix(Pawn_InteractionsTracker __instance, bool __result, Pawn recipient,
             InteractionDef intDef)
         {
-            if (intDef == InteractionDefOf.OccultTeaching)
-            {
-                recipient.SanityGain(-0.005f, "VAEI_OccultTeaching".Translate(__instance.pawn.Named("PAWN")));
-            }
-
             foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
             {
                 if (def.interactionEffects != null)

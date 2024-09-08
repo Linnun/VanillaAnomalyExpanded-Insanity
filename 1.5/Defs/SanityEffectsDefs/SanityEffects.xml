@@ -127,6 +127,10 @@
 				<interaction>DisturbingChat</interaction>
 				<effect>-0.025</effect>
 			</li>
+			<li>
+				<interaction>OccultTeaching</interaction>
+				<effect>-0.005</effect>
+			</li>
 		</interactionEffects>
 		<nonDisturbingInitiatorEffects>
 			<li>

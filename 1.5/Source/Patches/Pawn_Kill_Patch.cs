@@ -11,6 +11,10 @@ namespace VAEInsanity
         {
             if (dinfo.HasValue && dinfo.Value.Instigator is Pawn instigator)
             {
+                if (VAEInsanityModSettings.killingEntities.TryGetValue(__instance.def, out var option) && option.enabled)
+                {
+
+                }
                 if (__instance.IsShambler)
                 {
                     var need = instigator.needs?.TryGetNeed<Need_Sanity>();
@@ -31,15 +35,18 @@ namespace VAEInsanity
                         }
                     }
                 }
-                foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+                else
                 {
-                    if (def.killedThingsEffects != null)
+                    foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
                     {
-                        foreach (var effect in def.killedThingsEffects)
+                        if (def.killedThingsEffects != null)
                         {
-                            if (effect.thing == __instance.def)
+                            foreach (var effect in def.killedThingsEffects)
                             {
-                                instigator.SanityGain(effect, "VAEI_KillingThing".Translate(effect.thing.label));
+                                if (effect.thing == __instance.def)
+                                {
+                                    instigator.SanityGain(effect, "VAEI_KillingThing".Translate(effect.thing.label));
+                                }
                             }
                         }
                     }

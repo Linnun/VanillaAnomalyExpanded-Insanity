@@ -213,6 +213,7 @@ namespace VAEInsanity
         {
             var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay);
             var valuePerInterval = valuePerDay * (150f / 60000f); // Calculate value per 150 ticks
+            Log.Message("valuePerInterval: " + valuePerInterval);
             if (valuePerInterval != 0)
             {
                 GainSanity(valuePerInterval);
@@ -259,7 +260,7 @@ namespace VAEInsanity
             shouldBeVisible = true;
             if (PawnUtility.ShouldSendNotificationAbout(pawn) && PawnGenerator.IsBeingGenerated(pawn) is false)
             {
-                Find.LetterStack.ReceiveLetter("VAEI_Sanity".Translate(), "VAEI_SanityLetterDesc".Translate(), LetterDefOf.NegativeEvent, pawn);
+                Find.LetterStack.ReceiveLetter("VAEI_Sanity".Translate(), "VAEI_SanityLetterDesc".Translate(pawn.Named("PAWN")), LetterDefOf.NegativeEvent, pawn);
             }
         }
 

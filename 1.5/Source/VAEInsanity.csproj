@@ -110,6 +110,7 @@
     <Compile Include="Patches\PawnCapacityUtility_CalculateCapacityLevel_Patch.cs" />
     <Compile Include="Patches\TraitSet_GainTrait_Patch.cs" />
     <Compile Include="Patches\TraitSet_RemoveTrait_Patch.cs" />
+    <Compile Include="SanityEffect.cs" />
     <Compile Include="ThoughtWorker_DirtyRoom.cs" />
     <Compile Include="ThoughtWorker_Gagged.cs" />
     <Compile Include="ThoughtWorker_MoodSwing.cs" />
