@@ -66,50 +66,21 @@ namespace VAEInsanity
         public static void Postfix(Pawn_InteractionsTracker __instance, bool __result, Pawn recipient,
             InteractionDef intDef)
         {
-            foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+            if (VAEInsanityModSettings.interactionEffects.TryGetEffect(intDef, out var effect))
             {
-                if (def.interactionEffects != null)
-                {
-                    foreach (var effect in def.interactionEffects)
-                    {
-                        if (effect.interaction == intDef)
-                        {
-                            recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
-                        }
-                    }
-                }
+                recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
             }
             if (__instance.pawn.story.IsDisturbing)
             {
-                foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+                if (VAEInsanityModSettings.disturbingInitiatorEffects.TryGetEffect(intDef, out var disturbing))
                 {
-                    if (def.disturbingInitiatorEffects != null)
-                    {
-                        foreach (var effect in def.disturbingInitiatorEffects)
-                        {
-                            if (effect.interaction == intDef)
-                            {
-                                recipient.SanityGain(effect, "VAEI_DisturbingInteraction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
-                            }
-                        }
-                    }
+                    recipient.SanityGain(disturbing, "VAEI_DisturbingInteraction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
+
                 }
             }
-            else
+            else if (VAEInsanityModSettings.nonDisturbingInitiatorEffects.TryGetEffect(intDef, out var nonDisturbing))
             {
-                foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
-                {
-                    if (def.nonDisturbingInitiatorEffects != null)
-                    {
-                        foreach (var effect in def.nonDisturbingInitiatorEffects)
-                        {
-                            if (effect.interaction == intDef)
-                            {
-                                recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
-                            }
-                        }
-                    }
-                }
+                recipient.SanityGain(nonDisturbing, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
             }
         }
     }

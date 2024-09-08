@@ -9,9 +9,9 @@ namespace VAEInsanity
     {
         public static void Postfix(CompStudiable __instance, Pawn studier, float anomalyKnowledgeAmount)
         {
-            if (VAEInsanityModSettings.studyingEntities.TryGetValue(__instance.parent.def, out var option) && option.enabled)
+            if (VAEInsanityModSettings.studyingEntities.TryGetEffect(__instance.parent.def, out var effect))
             {
-                float sanityChange = anomalyKnowledgeAmount * option.sanityValue.RandomInRange;
+                float sanityChange = anomalyKnowledgeAmount * effect.sanityValue.max;
                 studier.SanityGain(sanityChange, "VEAI_AnomalyStudy".Translate(__instance.parent.Label));
             }
         }

@@ -8,18 +8,9 @@ namespace VAEInsanity
     {
         public static void Postfix(Pawn pawn, Verb verb)
         {
-            foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+            if (VAEInsanityModSettings.usedThingsEffects.TryGetEffect(verb.EquipmentSource?.def, out var thingEffect))
             {
-                if (def.usedThingsEffects != null)
-                {
-                    foreach (var thingEffect in def.usedThingsEffects)
-                    {
-                        if (verb.EquipmentSource?.def == thingEffect.thing)
-                        {
-                            pawn.SanityGain(thingEffect, "VAEI_UsingThing".Translate(thingEffect.thing.label));
-                        }
-                    }
-                }
+                pawn.SanityGain(thingEffect, "VAEI_UsingThing".Translate(verb.EquipmentSource?.def.label));
             }
         }
     }

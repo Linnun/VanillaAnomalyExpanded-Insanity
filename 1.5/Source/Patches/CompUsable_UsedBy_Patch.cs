@@ -9,18 +9,9 @@ namespace VAEInsanity
     {
         public static void Postfix(CompUsable __instance, Pawn p)
         {
-            foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+            if (VAEInsanityModSettings.usedThingsEffects.TryGetEffect(__instance.parent.def, out var effect))
             {
-                if (def.usedThingsEffects != null)
-                {
-                    foreach (var thingEffect in def.usedThingsEffects)
-                    {
-                        if (__instance.parent.def == thingEffect.thing)
-                        {
-                            p.SanityGain(thingEffect, "VAEI_UsingThing".Translate(thingEffect.thing.label));
-                        }
-                    }
-                }
+                p.SanityGain(effect, "VAEI_UsingThing".Translate(__instance.parent.def.label));
             }
         }
     }

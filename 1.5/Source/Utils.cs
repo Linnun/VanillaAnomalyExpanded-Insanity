@@ -35,18 +35,50 @@ namespace VAEInsanity
 
             foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
             {
-                FillEffects(def.killedThingsEffects, VAEInsanityModSettings.killingEntities, ent => ent.thing, 
-                    ent => new SanityEffect(ent.effect.min));
+                FillEffects(def.killedThingsEffects, VAEInsanityModSettings.killingEntities, ent => ent.thing, ent => new SanityEffect(ent.effect));
                 FillEffects(def.disturbingInitiatorEffects, VAEInsanityModSettings.disturbingInitiatorEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
                 FillEffects(def.interactionEffects, VAEInsanityModSettings.interactionEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
                 FillEffects(def.nonDisturbingInitiatorEffects, VAEInsanityModSettings.nonDisturbingInitiatorEffects, ent => ent.interaction, ent => new SanityEffect(ent.effect));
                 FillEffects(def.hediffEffects, VAEInsanityModSettings.hediffEffects, ent => ent.hediff, ent => new SanityEffect(ent.effect));
                 FillEffects(def.usedThingsEffects, VAEInsanityModSettings.usedThingsEffects, ent => ent.thing, ent => new SanityEffect(ent.effect));
                 FillEffects(def.ritualEffects, VAEInsanityModSettings.ritualEffects, ent => ent.ritual, ent => new SanityEffect(ent.effect));
+                if (def.psychicRitualEffects != null)
+                {
+                    foreach (var effect in def.psychicRitualEffects)
+                    {
+                        // For invokerEffect
+                        if (effect.invokerEffect != 0)
+                        {
+                            if (!VAEInsanityModSettings.invokerEffects.ContainsKey(effect.ritual))
+                            {
+                                VAEInsanityModSettings.invokerEffects[effect.ritual] = new SanityEffect(effect.invokerEffect);
+                            }
+                        }
+
+                        // For targetEffect
+                        if (effect.targetEffect != 0)
+                        {
+                            if (!VAEInsanityModSettings.targetEffects.ContainsKey(effect.ritual))
+                            {
+                                VAEInsanityModSettings.targetEffects[effect.ritual] = new SanityEffect(effect.targetEffect);
+                            }
+                        }
+
+                        // For chanterEffect
+                        if (effect.chanterEffect != 0)
+                        {
+                            if (!VAEInsanityModSettings.chanterEffects.ContainsKey(effect.ritual))
+                            {
+                                VAEInsanityModSettings.chanterEffects[effect.ritual] = new SanityEffect(effect.chanterEffect);
+                            }
+                        }
+                    }
+                }
             }
 
 
-            void FillEffects<T, TKey>(List<T> effectList, Dictionary<TKey, SanityEffect> targetDict, Func<T, TKey> keySelector, Func<T, SanityEffect> valueSelector)
+            void FillEffects<T, TKey>(List<T> effectList, Dictionary<TKey, SanityEffect> targetDict, 
+                Func<T, TKey> keySelector, Func<T, SanityEffect> valueSelector) where T : SanityEffectBase
             {
                 if (effectList != null)
                 {
@@ -55,14 +87,25 @@ namespace VAEInsanity
                         var key = keySelector(effect);
                         if (!targetDict.ContainsKey(key))
                         {
-                            targetDict[key] = valueSelector(effect);
+                            var value = targetDict[key] = valueSelector(effect);
+                            if (effect.description.NullOrEmpty() is false)
+                            {
+                                value.description = effect.description;
+                            }
                         }
                     }
                 }
             }
+        }
 
-            // Example usage:
-
+        public static bool TryGetEffect<T>(this Dictionary<T, SanityEffect> effectsDict, T def, out SanityEffect effect)
+        {
+            if (effectsDict.TryGetValue(def, out effect) && effect.enabled)
+            {
+                return true;
+            }
+            effect = null;
+            return false;
         }
 
         [DebugAction("Pawns", "Sanity +10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]
@@ -81,7 +124,7 @@ namespace VAEInsanity
             DebugActionsUtility.DustPuffFrom(p);
         }
 
-        public static void SanityGain(this Pawn pawn, SanityEffectBase effect, string reason)
+        public static void SanityGain(this Pawn pawn, SanityEffect effect, string reason)
         {
             var need = pawn?.needs?.TryGetNeed<Need_Sanity>();
             if (need != null)
@@ -90,7 +133,7 @@ namespace VAEInsanity
                 {
                     reason = effect.description;
                 }
-                need.GainSanity(effect.effect.RandomInRange, reason);
+                need.GainSanity(effect.sanityValue.RandomInRange, reason);
             }
         }
 

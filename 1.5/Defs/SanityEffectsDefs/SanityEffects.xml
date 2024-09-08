@@ -131,6 +131,14 @@
 				<interaction>OccultTeaching</interaction>
 				<effect>-0.005</effect>
 			</li>
+			<li>
+				<interaction>VAEI_TwistedWords</interaction>
+				<effect>-0.025</effect>
+			</li>
+			<li>
+				<interaction>VAEI_UnsettlingTalk</interaction>
+				<effect>-0.03</effect>
+			</li>
 		</interactionEffects>
 		<nonDisturbingInitiatorEffects>
 			<li>

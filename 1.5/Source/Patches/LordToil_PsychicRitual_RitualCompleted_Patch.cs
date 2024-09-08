@@ -10,31 +10,22 @@ namespace VAEInsanity
     {
         public static void Prefix(LordToil_PsychicRitual __instance)
         {
-            foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+            if (__instance.def is PsychicRitualDef_InvocationCircle ritual)
             {
-                if (def.psychicRitualEffects != null)
+                if (VAEInsanityModSettings.invokerEffects.TryGetEffect(ritual, out var effect))
                 {
-                    foreach (var effectDef in def.psychicRitualEffects)
-                    {
-                        if (__instance.def == effectDef.ritual)
-                        {
-                            if (effectDef.invokerEffect != 0)
-                            {
-                                var invoker = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(effectDef.ritual.InvokerRole);
-                                invoker.SanityGain(effectDef.invokerEffect, "VAEI_InvokerEffect".Translate(__instance.RitualData.psychicRitual.def.label));
-                            }
-                            if (effectDef.targetEffect != 0)
-                            {
-                                var target = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(effectDef.ritual.TargetRole);
-                                target.SanityGain(effectDef.invokerEffect, "VAEI_TargetEffect".Translate(__instance.RitualData.psychicRitual.def.label));
-                            }
-                            if (effectDef.chanterEffect != 0)
-                            {
-                                var chanter = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(effectDef.ritual.ChanterRole);
-                                chanter.SanityGain(effectDef.invokerEffect, "VAEI_ChanterEffect".Translate(__instance.RitualData.psychicRitual.def.label));
-                            }
-                        }
-                    }
+                    var invoker = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(ritual.InvokerRole);
+                    invoker.SanityGain(effect, "VAEI_InvokerEffect".Translate(__instance.RitualData.psychicRitual.def.label));
+                }
+                if (VAEInsanityModSettings.targetEffects.TryGetEffect(ritual, out var effect2))
+                {
+                    var target = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(ritual.TargetRole);
+                    target.SanityGain(effect2, "VAEI_TargetEffect".Translate(__instance.RitualData.psychicRitual.def.label));
+                }
+                if (VAEInsanityModSettings.chanterEffects.TryGetEffect(ritual, out var effect3))
+                {
+                    var chanter = __instance.RitualData.psychicRitual.assignments.FirstAssignedPawn(ritual.ChanterRole);
+                    chanter.SanityGain(effect3, "VAEI_ChanterEffect".Translate(__instance.RitualData.psychicRitual.def.label));
                 }
             }
         }

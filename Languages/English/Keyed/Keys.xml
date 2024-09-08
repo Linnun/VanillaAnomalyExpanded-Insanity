@@ -61,9 +61,11 @@
 	<VAEI_DisturbingInitiatorEffects>Disturbing initiator interactions:</VAEI_DisturbingInitiatorEffects>
 	<VAEI_InteractionEffects>Interactions:</VAEI_InteractionEffects>
 	<VAEI_NonDisturbingInitiatorEffects>Non-disturbing initiator interactions:</VAEI_NonDisturbingInitiatorEffects>
-	<VAEI_HediffEffects>Having health condidtions:</VAEI_HediffEffects>
-	<VAEI_UsedThingsEffects>Using things effects:</VAEI_UsedThingsEffects>
+	<VAEI_HediffEffects>Having health conditions:</VAEI_HediffEffects>
+	<VAEI_UsedThingsEffects>Using things:</VAEI_UsedThingsEffects>
 	<VAEI_RitualEffects>Participating in rituals:</VAEI_RitualEffects>
+	<VAEI_InvokerEffects>Psychic ritual (invoker):</VAEI_InvokerEffects>
+	<VAEI_TargetEffects>Psychic ritual (target):</VAEI_TargetEffects>
+	<VAEI_ChanterEffects>Psychic ritual (chanter):</VAEI_ChanterEffects>
 
-	
 </LanguageData>

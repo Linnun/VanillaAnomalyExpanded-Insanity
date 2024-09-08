@@ -35,24 +35,11 @@ namespace VAEInsanity
                         }
                     }
                 }
-                else
+                else if (VAEInsanityModSettings.killingEntities.TryGetEffect(__instance.def, out var effect))
                 {
-                    foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
-                    {
-                        if (def.killedThingsEffects != null)
-                        {
-                            foreach (var effect in def.killedThingsEffects)
-                            {
-                                if (effect.thing == __instance.def)
-                                {
-                                    instigator.SanityGain(effect, "VAEI_KillingThing".Translate(effect.thing.label));
-                                }
-                            }
-                        }
-                    }
+                    instigator.SanityGain(effect, "VAEI_KillingThing".Translate(__instance.def.label));
                 }
             }
-
         }
     }
 }

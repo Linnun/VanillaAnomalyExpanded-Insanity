@@ -12,10 +12,10 @@ namespace VAEInsanity
         {
             __result.AddPreTickAction(delegate
             {
-                if (VAEInsanityModSettings.suppressingEntities.TryGetValue(__instance.ThingToSuppress.def, 
-                    out var option) && option.enabled)
+                if (VAEInsanityModSettings.suppressingEntities.TryGetEffect(__instance.ThingToSuppress.def, 
+                    out var effect))
                 {
-                    __instance.pawn.SanityGainContinuously(option.sanityValue.RandomInRange / GenDate.TicksPerDay, "VAEI_SuppressingEntity".Translate(__instance.ThingToSuppress.Label));
+                    __instance.pawn.SanityGainContinuously(effect.sanityValue.max / GenDate.TicksPerDay, "VAEI_SuppressingEntity".Translate(__instance.ThingToSuppress.Label));
                 }
             });
         }

@@ -9,16 +9,16 @@ namespace VAEInsanity
     {
         public static void Postfix(Thing __instance, Pawn ingester, ref int numTaken)
         {
-            if (VAEInsanityModSettings.twistedMeatValue.enabled)
+            if (VAEInsanityModSettings.twistedMeatValue.TryGetEffect(out var effect))
             {
                 if (__instance.def == ThingDefOf.Meat_Twisted)
                 {
-                    float sanityChange = -(numTaken / 80.0f) * -VAEInsanityModSettings.twistedMeatValue.sanityValue.RandomInRange;
+                    float sanityChange = -(numTaken / 80.0f) * -effect;
                     ingester.SanityGain(sanityChange, "VEAI_EatingTwistedMeat".Translate());
                 }
                 else if (__instance.TryGetComp<CompIngredients>() is CompIngredients compIngredients && compIngredients.ingredients.Contains(ThingDefOf.Meat_Twisted))
                 {
-                    ingester.SanityGain(VAEInsanityModSettings.twistedMeatValue.sanityValue.RandomInRange, "VEAI_EatingTwistedMeatAsIngredient".Translate());
+                    ingester.SanityGain(effect, "VEAI_EatingTwistedMeatAsIngredient".Translate());
                 }
             }
         }

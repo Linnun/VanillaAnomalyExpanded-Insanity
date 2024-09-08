@@ -102,6 +102,7 @@
     <Compile Include="Patches\Pawn_HealthTracker_AddHediff_Patch.cs" />
     <Compile Include="Patches\Pawn_Kill_Patch.cs" />
     <Compile Include="Patches\Pawn_Notify_UsedVerb_Patch.cs" />
+    <Compile Include="Patches\Pawn_PsychicEntropyTracker_Notify_Meditated_Patch.cs" />
     <Compile Include="Patches\Pawn_RelationsTracker_OpinionOf_Patch.cs" />
     <Compile Include="Patches\PitGate_BeginCollapsing_Patch.cs" />
     <Compile Include="Patches\ReadingOutcomeDoerGainAnomalyResearch_OnReadingTick_Patch.cs" />
