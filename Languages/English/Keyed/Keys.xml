@@ -19,7 +19,7 @@
 	<VAEI_StatsReport_SanityGainPerDay>Sanity gain per day: {0}</VAEI_StatsReport_SanityGainPerDay>
 	<VAEI_LowSanity>Low sanity</VAEI_LowSanity>
 	<VAEI_HighSanity>High sanity</VAEI_HighSanity>
-	<VAEI_AnomalyBodypart>Anomalous body part ({0}): {1}</VAEI_AnomalyBodypart>
+	<VAEI_AnomalyBodypart>Anomalous body part ({0})</VAEI_AnomalyBodypart>
 	<VAEI_BeingInLabyrinth>Being in labyrinth</VAEI_BeingInLabyrinth>
 	<VAEI_BeingInUnnaturalDarkness>Being in the darkness</VAEI_BeingInUnnaturalDarkness>
 	<VAEI_UnnaturalCorpse>Unnatural corpse</VAEI_UnnaturalCorpse>

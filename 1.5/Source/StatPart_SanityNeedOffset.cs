@@ -40,11 +40,11 @@ namespace VAEInsanity
                 // Handle low and high sanity effects
                 if (currentSanityLevel <= 0.1f && VAEInsanityModSettings.lowSanityValue.TryGetEffect(out var lowSanityEffect))
                 {
-                    sanity.AddEffect(ref val, lowSanityEffect, explanation, "VAEI_LowSanity".Translate() + ": " + lowSanityEffect.ToStringPercentSigned("F2"));
+                    sanity.AddEffect(ref val, lowSanityEffect, explanation, "VAEI_LowSanity".Translate());
                 }
                 else if (currentSanityLevel >= 0.9f && VAEInsanityModSettings.highSanityValue.TryGetEffect(out var highSanityEffect))
                 {
-                    sanity.AddEffect(ref val, highSanityEffect, explanation, "VAEI_HighSanity".Translate() + ": " + highSanityEffect.ToStringPercentSigned("F2"));
+                    sanity.AddEffect(ref val, highSanityEffect, explanation, "VAEI_HighSanity".Translate());
                 }
 
                 // Handle hediff-related sanity effects
@@ -53,7 +53,7 @@ namespace VAEInsanity
                     if (VAEInsanityModSettings.hediffEffects.TryGetEffect(hediff.def, out var effect))
                     {
                         var value = effect.sanityValue.RandomInRange;
-                        sanity.AddEffect(ref val, value, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, value.ToStringPercentSigned("F2")));
+                        sanity.AddEffect(ref val, value, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label));
                     }
                 }
 
@@ -67,8 +67,7 @@ namespace VAEInsanity
                         {
                             if (VAEInsanityModSettings.duplicateSanityEffect.TryGetEffect(out var duplicateEffect))
                             {
-                                sanity.AddEffect(ref val, duplicateEffect, explanation,
-                                    "VAEI_BeingDuplicated".Translate() + ": " + duplicateEffect.ToStringPercentSigned("F2"));
+                                sanity.AddEffect(ref val, duplicateEffect, explanation, "VAEI_BeingDuplicated".Translate());
                             }
                         }
                     }
@@ -79,8 +78,7 @@ namespace VAEInsanity
                 {
                     if (VAEInsanityModSettings.unnaturalCorpseSanityEffect.TryGetEffect(out var unnaturalCorpseEffect))
                     {
-                        sanity.AddEffect(ref val, unnaturalCorpseEffect, explanation,
-                            "VAEI_UnnaturalCorpse".Translate() + ": " + unnaturalCorpseEffect.ToStringPercentSigned("F2"));
+                        sanity.AddEffect(ref val, unnaturalCorpseEffect, explanation, "VAEI_UnnaturalCorpse".Translate());
                     }
                 }
 
@@ -92,8 +90,7 @@ namespace VAEInsanity
                     {
                         if (VAEInsanityModSettings.labyrinthSanityEffect.TryGetEffect(out var labyrinthEffect))
                         {
-                            sanity.AddEffect(ref val, labyrinthEffect, explanation,
-                                "VAEI_BeingInLabyrinth".Translate() + ": " + labyrinthEffect.ToStringPercentSigned("F2"));
+                            sanity.AddEffect(ref val, labyrinthEffect, explanation, "VAEI_BeingInLabyrinth".Translate());
                         }
                     }
 
@@ -102,8 +99,7 @@ namespace VAEInsanity
                     {
                         if (VAEInsanityModSettings.unnaturalDarknessSanityEffect.TryGetEffect(out var unnaturalDarknessEffect))
                         {
-                            sanity.AddEffect(ref val, unnaturalDarknessEffect, explanation,
-                                "VAEI_BeingInUnnaturalDarkness".Translate() + ": " + unnaturalDarknessEffect.ToStringPercentSigned("F2"));
+                            sanity.AddEffect(ref val, unnaturalDarknessEffect, explanation, "VAEI_BeingInUnnaturalDarkness".Translate());
                         }
                     }
                 }

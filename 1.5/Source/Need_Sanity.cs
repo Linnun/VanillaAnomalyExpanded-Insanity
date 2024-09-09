@@ -156,8 +156,9 @@ namespace VAEInsanity
 
         public void AddEffect(ref float val, float effect, StringBuilder explanation, string message)
         {
-            val += PostProcess(effect);
-            explanation.AppendLine(message);
+            effect = PostProcess(effect);
+            val += effect;
+            explanation.AppendLine(message + ": " + effect.ToStringPercentSigned("F2"));
         }
 
         private float PostProcess(float value)
@@ -184,9 +185,8 @@ namespace VAEInsanity
 
         public override void NeedInterval()
         {
-            var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay);
-            var valuePerInterval = valuePerDay * (150f / 60000f); // Calculate value per 150 ticks
-            Log.Message(pawn + " - valuePerInterval: " + valuePerInterval);
+            var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay) / 60000f;
+            var valuePerInterval = valuePerDay * 150f; // Calculate value per 150 ticks
             if (valuePerInterval != 0)
             {
                 GainSanity(valuePerInterval);
