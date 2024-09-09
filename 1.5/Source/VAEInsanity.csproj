@@ -129,6 +129,7 @@
     <Compile Include="Utils.cs" />
     <Compile Include="VAEInsanityMod.cs" />
     <Compile Include="Patches\VoidAwakeningUtility_DisruptTheLink_Patch.cs" />
+    <Compile Include="VAEInsanityModSettings.cs" />
     <Compile Include="VoidDrawing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

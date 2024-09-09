@@ -1,10 +1,12 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 using static Verse.Widgets;
+
 namespace VAEInsanity
 {
     [HotSwappable]
@@ -44,23 +46,22 @@ namespace VAEInsanity
             pos.y += 24;
 
             DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_General".Translate(),
-                (ref Vector2 position, float width, float labelOffset) =>
+                new List<Action>
                 {
-                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.twistedMeatValue.enabled,
-                        ref VAEInsanityModSettings.twistedMeatValue.sanityValue,
-                        ref position, width, "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f,
-                        labelOffset);
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.twistedMeatValue, ref pos, widthWithoutScrollBar,
+                        "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.marriageCeremonyValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_MarriageCeremony".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.partyValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_Party".Translate(), 0f, 0.1f, labelXOffsetForListItems)
+                });
 
-                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.marriageCeremonyValue.enabled,
-                        ref VAEInsanityModSettings.marriageCeremonyValue.sanityValue,
-                        ref position, width, "VAEI_MarriageCeremony".Translate(), 0f, 0.1f,
-                        labelOffset);
-
-                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.partyValue.enabled,
-                        ref VAEInsanityModSettings.partyValue.sanityValue,
-                        ref position, width, "VAEI_Party".Translate(), 0f, 0.1f,
-                        labelOffset);
-                }, 3);
+            DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_PerformingJobs".Translate(),
+                new List<Action>
+                {
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.meditatingValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_Meditating".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                });
 
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_InteractionEffects".Translate(), VAEInsanityModSettings.interactionEffects, labelXOffsetForListItems, -0.1f, 0.1f);
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_NonDisturbingInitiatorEffects".Translate(), VAEInsanityModSettings.nonDisturbingInitiatorEffects, labelXOffsetForListItems, 0f, 0.1f);
@@ -76,41 +77,26 @@ namespace VAEInsanity
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_KillingEntities".Translate(),
                 VAEInsanityModSettings.killingEntities, labelXOffsetForListItems, 0f, 0.1f, listHeightOffset: 24 * 2);
             pos.y -= 10;
-            DrawCheckboxAndSlider(ref VAEInsanityModSettings.killingShamblerValue.enabled,
-                ref VAEInsanityModSettings.killingShamblerValue.sanityValue,
-                ref pos, widthWithoutScrollBar, "VAEI_KillingShambler".Translate(), 0f, 0.1f, labelXOffsetForListItems);
-
-            DrawCheckboxAndSlider(ref VAEInsanityModSettings.killingNociosphereValue.enabled,
-                ref VAEInsanityModSettings.killingNociosphereValue.sanityValue,
-                ref pos, widthWithoutScrollBar, "VAEI_KillingNociosphere".Translate(), 0f, 0.1f, labelXOffsetForListItems);
+            DrawCheckboxAndSlider(VAEInsanityModSettings.killingShamblerValue, ref pos, widthWithoutScrollBar,
+                "VAEI_KillingShambler".Translate(), 0f, 0.1f, labelXOffsetForListItems);
+            DrawCheckboxAndSlider(VAEInsanityModSettings.killingNociosphereValue, ref pos, widthWithoutScrollBar,
+                "VAEI_KillingNociosphere".Translate(), 0f, 0.1f, labelXOffsetForListItems);
             pos.y += 10;
-
-
             sectionScrollHeight = pos.y - inRect.y;
             EndScrollView();
         }
 
-        private delegate void DrawSettingsDelegate(ref Vector2 pos, float widthWithoutScrollBar, float labelXOffsetForListItems);
-
-        private void DrawSection(ref Vector2 pos, float widthWithoutScrollBar, float labelXOffsetForListItems, 
-            string sectionLabel, DrawSettingsDelegate drawSettingsFunc, int elementsCount)
+        private void DrawSection(ref Vector2 pos, float widthWithoutScrollBar, float labelXOffsetForListItems,
+            string sectionLabel, List<Action> drawSettingsActions)
         {
-            float elementHeight = 24f; // Height of each element
-            float sectionHeight = elementsCount * elementHeight + 10; // Dynamically calculate height
-
-            // Draw the section label
             Label(new Rect(pos.x, pos.y, widthWithoutScrollBar, 24), sectionLabel);
             pos.y += 24;
 
-            // Draw the section for sliders or other UI elements
-            Rect sectionRect = new Rect(pos.x, pos.y, widthWithoutScrollBar, sectionHeight);
-            DrawMenuSection(sectionRect);
+            DrawMenuSection(new Rect(pos.x, pos.y, widthWithoutScrollBar, drawSettingsActions.Count * 24f + 10));
             pos.y += 5;
 
-            // Call the passed-in function to draw the settings for this section
-            drawSettingsFunc(ref pos, widthWithoutScrollBar, labelXOffsetForListItems);
-
-            pos.y += 10; // Space after the section
+            drawSettingsActions.ForEach(action => action());
+            pos.y += 10;
         }
 
         // Updated DrawList to accept min and max values for the sliders
@@ -132,8 +118,6 @@ namespace VAEInsanity
             // Draw each item in the list
             foreach (var kvp in list.ToList())
             {
-                var enabled = kvp.Value.enabled;
-                var value = kvp.Value.sanityValue;
                 var defLabel = (string)kvp.Key.LabelCap;
                 if (kvp.Key is RitualOutcomeEffectDef ritualDef)
                 {
@@ -149,73 +133,62 @@ namespace VAEInsanity
                     }
                 }
 
-                // Draw based on isSingleSlider flag
                 if (kvp.Value.isSingleSlider)
                 {
-                    // Draw checkbox and slider for single value with provided min/max values
-                    DrawCheckboxAndSlider(ref enabled, ref value, ref pos, width, defLabel, minSliderValue, maxSliderValue, labelXOffset);
+                    DrawCheckboxAndSlider(kvp.Value, ref pos, width, defLabel, minSliderValue, maxSliderValue, labelXOffset);
                 }
                 else
                 {
-                    // Use FloatRange for other cases with provided min/max values
-                    DrawCheckboxAndFloatRange(ref enabled, ref value, ref pos, width, defLabel, minSliderValue, maxSliderValue, labelXOffset);
+                    DrawCheckboxAndFloatRange(kvp.Value, ref pos, width, defLabel, minSliderValue, maxSliderValue, labelXOffset);
                 }
-
-                // Update the dictionary with new values
-                list[kvp.Key] = new SanityEffect
-                {
-                    enabled = enabled,
-                    sanityValue = value,
-                    isSingleSlider = kvp.Value.isSingleSlider
-                };
             }
 
             pos.y += 10;
         }
 
-        public void DrawCheckboxAndFloatRange(ref bool checkboxValue, ref FloatRange rangeValue, ref Vector2 pos, float width,
-            string label, float minRangeValue, float maxRangeValue, float labelXOffset = 0)
+        // Refactored to use SanityEffect
+        public void DrawCheckboxAndFloatRange(SanityEffect effect, ref Vector2 pos, float width, string label, float minRangeValue, float maxRangeValue, float labelXOffset = 0)
         {
             // Draw the checkbox
             float checkboxXOffset = width - 30;
-            Checkbox(new Vector2(checkboxXOffset, pos.y), ref checkboxValue);
+            Checkbox(new Vector2(checkboxXOffset, pos.y), ref effect.enabled);
 
             // Set consistent label width and slider width
             float labelWidth = 250;  // Adjust based on layout needs
             float sliderWidth = width - labelWidth - 50 - labelXOffset - 5;
 
             // Adjust label position and draw the FloatRange slider next to the label
-            GUI.color = checkboxValue ? Color.white : Color.grey;
+            GUI.color = effect.enabled ? Color.white : Color.grey;
             Label(new Rect(pos.x + labelXOffset, pos.y, labelWidth, 24),
-                          label + ": " + rangeValue.min.ToStringPercent() + " - " + rangeValue.max.ToStringPercent());
+                          label + ": " + effect.sanityValue.min.ToStringPercent() + " - " + effect.sanityValue.max.ToStringPercent());
 
             FloatRange(new Rect(pos.x + labelXOffset + labelWidth + 5, pos.y - 5, sliderWidth, 24),
-                (int)pos.y, ref rangeValue, minRangeValue, maxRangeValue, null);
+                (int)pos.y, ref effect.sanityValue, minRangeValue, maxRangeValue, null);
 
             GUI.color = Color.white;
 
             pos.y += 24; // Increment y position for the next item, keeping the label and slider on the same line
         }
 
-        public void DrawCheckboxAndSlider(ref bool checkboxValue, ref FloatRange sliderValue, ref Vector2 pos, float width,
-            string label, float minSliderValue, float maxSliderValue, float labelXOffset = 0)
+        // Refactored to use SanityEffect
+        public void DrawCheckboxAndSlider(SanityEffect effect, ref Vector2 pos, float width, string label, float minSliderValue, float maxSliderValue, float labelXOffset = 0)
         {
             // Draw the checkbox
             float checkboxXOffset = width - 30;
-            Checkbox(new Vector2(checkboxXOffset, pos.y), ref checkboxValue);
+            Checkbox(new Vector2(checkboxXOffset, pos.y), ref effect.enabled);
 
             // Set consistent label width and slider width
             float labelWidth = 250;  // Adjust based on layout needs
             float sliderWidth = width - labelWidth - 50 - labelXOffset;
 
             // Adjust label position with the offset and draw the slider next to the label
-            GUI.color = checkboxValue ? Color.white : Color.grey;
+            GUI.color = effect.enabled ? Color.white : Color.grey;
             Label(new Rect(pos.x + labelXOffset, pos.y, labelWidth, 24),
-                          label + ": " + sliderValue.max.ToStringPercent());
+                          label + ": " + effect.sanityValue.max.ToStringPercent());
 
             var value = HorizontalSlider(new Rect(pos.x + labelXOffset + labelWidth, pos.y, sliderWidth, 24),
-                sliderValue.max, minSliderValue, maxSliderValue, middleAlignment: true);
-            sliderValue = new FloatRange(value);
+                effect.sanityValue.max, minSliderValue, maxSliderValue, middleAlignment: true);
+            effect.sanityValue = new FloatRange(value);
             GUI.color = Color.white;
 
             pos.y += 24; // Increment y position for the next item, keeping the label and slider on the same line
@@ -318,82 +291,4 @@ namespace VAEInsanity
             return "VAEI_ModSettingsName".Translate();
         }
     }
-    public class VAEInsanityModSettings : ModSettings
-    {
-        public static bool selfHarmEnabled = false;
-        public static SanityEffect twistedMeatValue = new SanityEffect(-0.01f);
-        public static SanityEffect marriageCeremonyValue = new SanityEffect(0.05f);
-        public static SanityEffect partyValue = new SanityEffect(0.02f);
-        public static SanityEffect killingShamblerValue = new SanityEffect(0.01f);
-        public static SanityEffect killingNociosphereValue = new SanityEffect(0.05f);
-        public static SanityEffect meditatingValue = new SanityEffect(0.02f);
-
-        public static Dictionary<ThingDef, SanityEffect> suppressingEntities = new();
-        public static Dictionary<ThingDef, SanityEffect> killingEntities = new();
-        public static Dictionary<ThingDef, SanityEffect> studyingEntities = new();
-
-        public static Dictionary<InteractionDef, SanityEffect> disturbingInitiatorEffects = new();
-        public static Dictionary<InteractionDef, SanityEffect> interactionEffects = new();
-        public static Dictionary<InteractionDef, SanityEffect> nonDisturbingInitiatorEffects = new();
-
-        public static Dictionary<HediffDef, SanityEffect> hediffEffects = new();
-        public static Dictionary<ThingDef, SanityEffect> usedThingsEffects = new();
-        public static Dictionary<RitualOutcomeEffectDef, SanityEffect> ritualEffects = new();
-
-        public static Dictionary<PsychicRitualDef_InvocationCircle, SanityEffect> invokerEffects = new();
-        public static Dictionary<PsychicRitualDef_InvocationCircle, SanityEffect> targetEffects = new();
-        public static Dictionary<PsychicRitualDef_InvocationCircle, SanityEffect> chanterEffects = new();
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look(ref selfHarmEnabled, "selfHarmEnabled");
-            Scribe_Deep.Look(ref twistedMeatValue, "twistedMeatValue");
-            Scribe_Deep.Look(ref marriageCeremonyValue, "marriageCeremonyValue");
-            Scribe_Deep.Look(ref partyValue, "partyValue");
-
-            Scribe_Collections.Look(ref suppressingEntities, "suppressingEntities", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref killingEntities, "killingEntities", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref studyingEntities, "studyingEntities", LookMode.Def, LookMode.Deep);
-
-            Scribe_Collections.Look(ref disturbingInitiatorEffects, "disturbingInitiatorEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref interactionEffects, "interactionEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref nonDisturbingInitiatorEffects, "nonDisturbingInitiatorEffects", LookMode.Def, LookMode.Deep);
-
-            Scribe_Collections.Look(ref hediffEffects, "hediffEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref usedThingsEffects, "usedThingsEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref ritualEffects, "ritualEffects", LookMode.Def, LookMode.Deep);
-
-            Scribe_Collections.Look(ref invokerEffects, "invokerEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref targetEffects, "targetEffects", LookMode.Def, LookMode.Deep);
-            Scribe_Collections.Look(ref chanterEffects, "chanterEffects", LookMode.Def, LookMode.Deep);
-
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                suppressingEntities ??= new();
-                killingEntities ??= new();
-                studyingEntities ??= new();
-
-                disturbingInitiatorEffects ??= new();
-                interactionEffects ??= new();
-                nonDisturbingInitiatorEffects ??= new();
-
-                hediffEffects ??= new();
-                usedThingsEffects ??= new();
-                ritualEffects ??= new();
-
-                invokerEffects ??= new();
-                targetEffects ??= new();
-                chanterEffects ??= new();
-                twistedMeatValue ??= new SanityEffect(-0.01f);
-                marriageCeremonyValue ??= new SanityEffect(0.05f);
-                partyValue ??= new SanityEffect(0.02f);
-                killingShamblerValue ??= new SanityEffect(0.01f);
-                killingNociosphereValue ??= new SanityEffect(0.05f);
-                meditatingValue ??= new SanityEffect(0.02f);
-
-            }
-        }
-    }
-
 }

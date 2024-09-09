@@ -9,7 +9,10 @@ namespace VAEInsanity
     {
         public static void Postfix(Pawn_PsychicEntropyTracker __instance)
         {
-            __instance.pawn.SanityGainContinuously(0.02f / GenDate.TicksPerDay, "VAEI_Meditating".Translate());
+            if (VAEInsanityModSettings.meditatingValue.TryGetEffect(out var effect))
+            {
+                __instance.pawn.SanityGainContinuously(effect / GenDate.TicksPerDay, "VAEI_Meditating".Translate());
+            }
         }
     }
 }
