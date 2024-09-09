@@ -154,22 +154,9 @@ namespace VAEInsanity
             }
         }
 
-        public void AddEffect(ref float val, SanityEffectBase effect, StringBuilder explanation, string message)
-        {
-            var value = effect.effect.RandomInRange;
-            value = PostProcess(value);
-            val += value;
-            if (effect.description.NullOrEmpty() is false)
-            {
-                message = effect.description + ": " + value.ToStringPercentSigned("F2");
-            }
-            explanation.AppendLine(message);
-        }
-
         public void AddEffect(ref float val, float effect, StringBuilder explanation, string message)
         {
-            effect = PostProcess(effect);
-            val += effect;
+            val += PostProcess(effect);
             explanation.AppendLine(message);
         }
 
@@ -199,6 +186,7 @@ namespace VAEInsanity
         {
             var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay);
             var valuePerInterval = valuePerDay * (150f / 60000f); // Calculate value per 150 ticks
+            Log.Message(pawn + " - valuePerInterval: " + valuePerInterval);
             if (valuePerInterval != 0)
             {
                 GainSanity(valuePerInterval);

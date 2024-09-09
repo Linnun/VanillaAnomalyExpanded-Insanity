@@ -17,15 +17,16 @@
 	<VAEI_DisturbingInteraction>Disturbing {0} from {PAWN_nameDef}</VAEI_DisturbingInteraction>
 	<VAEI_Interaction>{0} from {PAWN_nameDef}</VAEI_Interaction>
 	<VAEI_StatsReport_SanityGainPerDay>Sanity gain per day: {0}</VAEI_StatsReport_SanityGainPerDay>
-	<VAEI_LowSanity>Low sanity: {0}</VAEI_LowSanity>
-	<VAEI_HighSanity>High sanity: {0}</VAEI_HighSanity>
+	<VAEI_LowSanity>Low sanity</VAEI_LowSanity>
+	<VAEI_HighSanity>High sanity</VAEI_HighSanity>
 	<VAEI_AnomalyBodypart>Anomalous body part ({0}): {1}</VAEI_AnomalyBodypart>
-	<VAEI_BeingInLabyrinth>Being in labyrinth: {0}</VAEI_BeingInLabyrinth>
-	<VAEI_BeingInUnnaturalDarkness>Being in the darkness: {0}</VAEI_BeingInUnnaturalDarkness>
+	<VAEI_BeingInLabyrinth>Being in labyrinth</VAEI_BeingInLabyrinth>
+	<VAEI_BeingInUnnaturalDarkness>Being in the darkness</VAEI_BeingInUnnaturalDarkness>
+	<VAEI_UnnaturalCorpse>Unnatural corpse</VAEI_UnnaturalCorpse>
 	<VAEI_InvokerEffect>{0} ritual invocation</VAEI_InvokerEffect>
 	<VAEI_TargetEffect>Targeted by {0} ritual</VAEI_TargetEffect>
 	<VAEI_ChanterEffect>Chanting during {0} ritual</VAEI_ChanterEffect>
-	<VAEI_BeingDuplicated>Being duplicated: {0}</VAEI_BeingDuplicated>
+	<VAEI_BeingDuplicated>Being duplicated</VAEI_BeingDuplicated>
 	<VAEI_UsingThing>Using {0}</VAEI_UsingThing>
 	<VAEI_KillingThing>Killing {0}</VAEI_KillingThing>
 	<VAEI_ReadingTome>Reading tome</VAEI_ReadingTome>
@@ -75,4 +76,5 @@
 	<VAEI_PerformingJobs>Performing jobs (sanity per day):</VAEI_PerformingJobs>
 	<VAEI_PitGateCollapsing>Pit gate collapsing</VAEI_PitGateCollapsing>
 	<VAEI_RecoveringFromMadness>Recovering from madness</VAEI_RecoveringFromMadness>
+	<VAEI_PassiveEffectsPerDay>Passive effects (sanity per day):</VAEI_PassiveEffectsPerDay>
 </LanguageData>

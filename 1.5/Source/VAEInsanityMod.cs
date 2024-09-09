@@ -48,10 +48,6 @@ namespace VAEInsanity
             DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_General".Translate(),
                 new List<Action>
                 {
-                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.lowSanityValue, ref pos, widthWithoutScrollBar,
-                        "VAEI_LowSanity".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
-                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.highSanityValue, ref pos, widthWithoutScrollBar,
-                        "VAEI_HighSanity".Translate(), 0f, 0.1f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.twistedMeatValue, ref pos, widthWithoutScrollBar,
                         "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.marriageCeremonyValue, ref pos, widthWithoutScrollBar,
@@ -65,7 +61,24 @@ namespace VAEInsanity
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.voidClosing, ref pos, widthWithoutScrollBar,
                         "VAEI_VoidClosing".Translate(), 0f, 1f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.recoveringFromMadness, ref pos, widthWithoutScrollBar,
-                        "VAEI_RecoveringFromMadness".Translate(), 0f, 0.5f, labelXOffsetForListItems)
+                        "VAEI_RecoveringFromMadness".Translate(), 0f, 0.5f, labelXOffsetForListItems),
+                });
+
+            DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_PassiveEffectsPerDay".Translate(),
+                new List<Action>
+                {
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.highSanityValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_HighSanity".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.lowSanityValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_LowSanity".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.duplicateSanityEffect, ref pos, widthWithoutScrollBar,
+                        "VAEI_BeingDuplicated".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.unnaturalCorpseSanityEffect, ref pos, widthWithoutScrollBar,
+                        "VAEI_UnnaturalCorpse".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.labyrinthSanityEffect, ref pos, widthWithoutScrollBar,
+                        "VAEI_BeingInLabyrinth".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.unnaturalDarknessSanityEffect, ref pos, widthWithoutScrollBar,
+                        "VAEI_BeingInUnnaturalDarkness".Translate(), -0.5f, -0.001f, labelXOffsetForListItems)
                 });
 
             DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_PerformingJobs".Translate(),
