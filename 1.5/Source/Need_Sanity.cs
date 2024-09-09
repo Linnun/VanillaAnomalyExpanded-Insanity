@@ -153,20 +153,6 @@ namespace VAEInsanity
                 }
             }
         }
-        private const float LowSanityEffect = -0.01f;
-        private const float HighSanityEffect = 0.01f;
-        public void HandleSanityLevel(ref float val, StringBuilder explanation)
-        {
-            var currentSanityLevel = CurLevel;
-            if (currentSanityLevel <= 0.1f)
-            {
-                AddEffect(ref val, LowSanityEffect, explanation, "VAEI_LowSanity".Translate(LowSanityEffect.ToStringPercentSigned("F2")));
-            }
-            else if (currentSanityLevel >= 0.9f)
-            {
-                AddEffect(ref val, HighSanityEffect, explanation, "VAEI_HighSanity".Translate(HighSanityEffect.ToStringPercentSigned("F2")));
-            }
-        }
 
         public void AddEffect(ref float val, SanityEffectBase effect, StringBuilder explanation, string message)
         {
@@ -213,7 +199,6 @@ namespace VAEInsanity
         {
             var valuePerDay = pawn.GetStatValue(DefsOf.VAEI_SanityGainPerDay);
             var valuePerInterval = valuePerDay * (150f / 60000f); // Calculate value per 150 ticks
-            Log.Message("valuePerInterval: " + valuePerInterval);
             if (valuePerInterval != 0)
             {
                 GainSanity(valuePerInterval);

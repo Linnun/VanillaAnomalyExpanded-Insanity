@@ -11,10 +11,9 @@ namespace VAEInsanity
         {
             foreach (var pawn in __instance.Map.mapPawns.AllHumanlike)
             {
-                var need = pawn.needs?.TryGetNeed<Need_Sanity>();
-                if (need != null)
+                if (VAEInsanityModSettings.pitGateCollapsing.TryGetEffect(out var effect))
                 {
-                    need.GainSanity(0.05f, "VAEI_PitgateCollapsed".Translate());
+                    pawn.SanityGain(effect, "VAEI_PitgateCollapsed".Translate());
                 }
             }
         }

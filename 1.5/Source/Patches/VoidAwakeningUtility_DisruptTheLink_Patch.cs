@@ -12,10 +12,9 @@ namespace VAEInsanity
         {
             foreach (var pawn2 in PawnsFinder.AllMaps_SpawnedPawnsInFaction(pawn.Faction))
             {
-                var need = pawn2.needs?.TryGetNeed<Need_Sanity>();
-                if (need != null)
+                if (VAEInsanityModSettings.voidClosing.TryGetEffect(out var effect))
                 {
-                    need.GainSanity(1f, "VAEI_VoidClosing".Translate());
+                    pawn2.SanityGain(effect, "VAEI_VoidClosing".Translate());
                 }
             }
         }

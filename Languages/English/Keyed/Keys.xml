@@ -73,4 +73,6 @@
 	<VAEI_KillingShambler>Shambler</VAEI_KillingShambler>
 	<VAEI_KillingNociosphere>Nociosphere</VAEI_KillingNociosphere>
 	<VAEI_PerformingJobs>Performing jobs (sanity per day):</VAEI_PerformingJobs>
+	<VAEI_PitGateCollapsing>Pit gate collapsing</VAEI_PitGateCollapsing>
+	<VAEI_RecoveringFromMadness>Recovering from madness</VAEI_RecoveringFromMadness>
 </LanguageData>

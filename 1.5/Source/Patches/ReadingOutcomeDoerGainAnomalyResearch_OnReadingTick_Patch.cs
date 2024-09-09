@@ -55,7 +55,10 @@ namespace VAEInsanity
 
         public static void Postfix(Pawn reader)
         {
-            reader.SanityGainContinuously(-0.035f / GenDate.TicksPerDay, "VAEI_ReadingTome".Translate());
+            if (VAEInsanityModSettings.readingTomeValue.TryGetEffect(out var effect))
+            {
+                reader.SanityGainContinuously(effect / GenDate.TicksPerDay, "VAEI_ReadingTome".Translate());
+            }
         }
     }
 }

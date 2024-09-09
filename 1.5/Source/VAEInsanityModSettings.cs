@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using Verse;
+
 namespace VAEInsanity
 {
     public class VAEInsanityModSettings : ModSettings
@@ -12,6 +13,15 @@ namespace VAEInsanity
         public static SanityEffect killingShamblerValue = new SanityEffect(0.01f);
         public static SanityEffect killingNociosphereValue = new SanityEffect(0.05f);
         public static SanityEffect meditatingValue = new SanityEffect(0.02f);
+        public static SanityEffect readingTomeValue = new SanityEffect(-0.035f);
+        public static SanityEffect highSanityValue = new SanityEffect(0.01f);
+        public static SanityEffect lowSanityValue = new SanityEffect(-0.01f);
+
+        // New fields
+        public static SanityEffect observingVoidDrawings = new SanityEffect(-0.003f);
+        public static SanityEffect pitGateCollapsing = new SanityEffect(0.05f);
+        public static SanityEffect voidClosing = new SanityEffect(1f);
+        public static SanityEffect recoveringFromMadness = new SanityEffect(0.1f);
 
         public static Dictionary<ThingDef, SanityEffect> suppressingEntities = new();
         public static Dictionary<ThingDef, SanityEffect> killingEntities = new();
@@ -37,6 +47,13 @@ namespace VAEInsanity
             Scribe_Deep.Look(ref marriageCeremonyValue, "marriageCeremonyValue");
             Scribe_Deep.Look(ref partyValue, "partyValue");
             Scribe_Deep.Look(ref meditatingValue, "meditatingValue");
+            Scribe_Deep.Look(ref readingTomeValue, "readingTomeValue");
+            Scribe_Deep.Look(ref highSanityValue, "highSanityValue");
+            Scribe_Deep.Look(ref lowSanityValue, "lowSanityValue");
+            Scribe_Deep.Look(ref observingVoidDrawings, "observingVoidDrawings");
+            Scribe_Deep.Look(ref pitGateCollapsing, "pitGateCollapsing");
+            Scribe_Deep.Look(ref voidClosing, "voidClosing");
+            Scribe_Deep.Look(ref recoveringFromMadness, "recoveringFromMadness");
 
             Scribe_Collections.Look(ref suppressingEntities, "suppressingEntities", LookMode.Def, LookMode.Deep);
             Scribe_Collections.Look(ref killingEntities, "killingEntities", LookMode.Def, LookMode.Deep);
@@ -71,14 +88,22 @@ namespace VAEInsanity
                 invokerEffects ??= new();
                 targetEffects ??= new();
                 chanterEffects ??= new();
+
                 twistedMeatValue ??= new SanityEffect(-0.01f);
                 marriageCeremonyValue ??= new SanityEffect(0.05f);
                 partyValue ??= new SanityEffect(0.02f);
                 killingShamblerValue ??= new SanityEffect(0.01f);
                 killingNociosphereValue ??= new SanityEffect(0.05f);
                 meditatingValue ??= new SanityEffect(0.02f);
+                readingTomeValue ??= new SanityEffect(-0.035f);
+
+                observingVoidDrawings ??= new SanityEffect(-0.003f);
+                pitGateCollapsing ??= new SanityEffect(0.05f);
+                voidClosing ??= new SanityEffect(1f);
+                recoveringFromMadness ??= new SanityEffect(0.1f);
+                highSanityValue ??= new SanityEffect(0.01f);
+                lowSanityValue ??= new SanityEffect(-0.01f);
             }
         }
     }
-
 }

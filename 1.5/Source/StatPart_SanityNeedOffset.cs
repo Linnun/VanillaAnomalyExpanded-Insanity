@@ -38,21 +38,22 @@ namespace VAEInsanity
             var sanity = pawn?.needs?.TryGetNeed<Need_Sanity>();
             if (sanity != null)
             {
-                sanity.HandleSanityLevel(ref val, explanation);
+                var currentSanityLevel = sanity.CurLevel;
+                if (currentSanityLevel <= 0.1f && VAEInsanityModSettings.lowSanityValue.TryGetEffect(out var lowSanityEffect))
+                {
+                    sanity.AddEffect(ref val, lowSanityEffect, explanation, "VAEI_LowSanity".Translate(lowSanityEffect.ToStringPercentSigned("F2")));
+                }
+                else if (currentSanityLevel >= 0.9f && VAEInsanityModSettings.highSanityValue.TryGetEffect(out var highSanityEffect))
+                {
+                    sanity.AddEffect(ref val, highSanityEffect, explanation, "VAEI_HighSanity".Translate(highSanityEffect.ToStringPercentSigned("F2")));
+                }
+
                 foreach (var hediff in pawn.health.hediffSet.hediffs)
                 {
-                    foreach (var def in DefDatabase<SanityEffectsDef>.AllDefs)
+                    if (VAEInsanityModSettings.hediffEffects.TryGetEffect(hediff.def, out var effect))
                     {
-                        if (def.hediffEffects != null)
-                        {
-                            foreach (var effect in def.hediffEffects)
-                            {
-                                if (effect.hediff == hediff.def)
-                                {
-                                    sanity.AddEffect(ref val, effect, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, effect.effect.RandomInRange.ToStringPercentSigned("F2")));
-                                }
-                            }
-                        }
+                        var value = effect.sanityValue.RandomInRange;
+                        sanity.AddEffect(ref val, value, explanation, "VAEI_AnomalyBodypart".Translate(hediff.Label, value.ToStringPercentSigned("F2")));
                     }
                 }
 

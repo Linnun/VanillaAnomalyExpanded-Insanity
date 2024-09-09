@@ -19,7 +19,10 @@ namespace VAEInsanity
             }
             Thought_MemoryObservation obj = (Thought_MemoryObservation)ThoughtMaker.MakeThought(DefsOf.VAEI_VoidDrawings);
             obj.Target = this;
-            sanity.GainSanity(-0.003f, "VAEI_ObservingVoidDrawings".Translate());
+            if (VAEInsanityModSettings.observingVoidDrawings.TryGetEffect(out var effect))
+            {
+                sanity.GainSanity(effect, "VAEI_ObservingVoidDrawings".Translate());
+            }
             return obj;
         }
     }

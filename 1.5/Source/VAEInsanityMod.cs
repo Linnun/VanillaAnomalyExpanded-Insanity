@@ -48,12 +48,24 @@ namespace VAEInsanity
             DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_General".Translate(),
                 new List<Action>
                 {
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.lowSanityValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_LowSanity".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.highSanityValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_HighSanity".Translate(), 0f, 0.1f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.twistedMeatValue, ref pos, widthWithoutScrollBar,
                         "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.marriageCeremonyValue, ref pos, widthWithoutScrollBar,
                         "VAEI_MarriageCeremony".Translate(), 0f, 0.1f, labelXOffsetForListItems),
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.partyValue, ref pos, widthWithoutScrollBar,
-                        "VAEI_Party".Translate(), 0f, 0.1f, labelXOffsetForListItems)
+                        "VAEI_Party".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.observingVoidDrawings, ref pos, widthWithoutScrollBar,
+                        "VAEI_ObservingVoidDrawings".Translate(), -0.05f, -0.001f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.pitGateCollapsing, ref pos, widthWithoutScrollBar,
+                        "VAEI_PitGateCollapsing".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.voidClosing, ref pos, widthWithoutScrollBar,
+                        "VAEI_VoidClosing".Translate(), 0f, 1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.recoveringFromMadness, ref pos, widthWithoutScrollBar,
+                        "VAEI_RecoveringFromMadness".Translate(), 0f, 0.5f, labelXOffsetForListItems)
                 });
 
             DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_PerformingJobs".Translate(),
@@ -61,6 +73,8 @@ namespace VAEInsanity
                 {
                     () => DrawCheckboxAndSlider(VAEInsanityModSettings.meditatingValue, ref pos, widthWithoutScrollBar,
                         "VAEI_Meditating".Translate(), 0f, 0.1f, labelXOffsetForListItems),
+                    () => DrawCheckboxAndSlider(VAEInsanityModSettings.readingTomeValue, ref pos, widthWithoutScrollBar,
+                        "VAEI_ReadingTome".Translate(), -0.1f, -0.001f, labelXOffsetForListItems),
                 });
 
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_InteractionEffects".Translate(), VAEInsanityModSettings.interactionEffects, labelXOffsetForListItems, -0.1f, 0.1f);
