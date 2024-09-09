@@ -55,17 +55,22 @@
 
 {PAWN_nameDef} will unfortunately remain forever prone to losing {PAWN_possessive} mind once again, even more so than others. Any negative effects on sanity will be doubled, which might cause {PAWN_nameDef} to become inhumanized again.</VAEI_RehumanizedDesc>
 	<VAEI_SanityLossEffects>Sanity loss/gain effects:</VAEI_SanityLossEffects>
-	<VAEI_SuppressingEntities>Suppressing entities:</VAEI_SuppressingEntities>
+	<VAEI_SuppressingEntities>Suppressing entities (sanity per day):</VAEI_SuppressingEntities>
 	<VAEI_StudyingEntities>Studying entities:</VAEI_StudyingEntities>
 	<VAEI_KillingEntities>Killing entities:</VAEI_KillingEntities>
 	<VAEI_DisturbingInitiatorEffects>Disturbing initiator interactions:</VAEI_DisturbingInitiatorEffects>
 	<VAEI_InteractionEffects>Interactions:</VAEI_InteractionEffects>
 	<VAEI_NonDisturbingInitiatorEffects>Non-disturbing initiator interactions:</VAEI_NonDisturbingInitiatorEffects>
-	<VAEI_HediffEffects>Having health conditions:</VAEI_HediffEffects>
+	<VAEI_HediffEffects>Having health conditions (sanity per day):</VAEI_HediffEffects>
 	<VAEI_UsedThingsEffects>Using things:</VAEI_UsedThingsEffects>
 	<VAEI_RitualEffects>Participating in rituals:</VAEI_RitualEffects>
 	<VAEI_InvokerEffects>Psychic ritual (invoker):</VAEI_InvokerEffects>
 	<VAEI_TargetEffects>Psychic ritual (target):</VAEI_TargetEffects>
 	<VAEI_ChanterEffects>Psychic ritual (chanter):</VAEI_ChanterEffects>
-
+	<VAEI_MarriageCeremony>Marriage ceremony</VAEI_MarriageCeremony>
+	<VAEI_Party>Partying</VAEI_Party>
+	<VAEI_General>General</VAEI_General>
+	<VAEI_KillingShambler>Shambler</VAEI_KillingShambler>
+	<VAEI_KillingNociosphere>Nociosphere</VAEI_KillingNociosphere>
+	<VAEI_PerformingJobs>Performing jobs (sanity per day):</VAEI_PerformingJobs>
 </LanguageData>

@@ -98,9 +98,9 @@ namespace VAEInsanity
             }
         }
 
-        public static bool TryGetEffect<T>(this Dictionary<T, SanityEffect> effectsDict, T def, out SanityEffect effect)
+        public static bool TryGetEffect<T>(this Dictionary<T, SanityEffect> effectsDict, T key, out SanityEffect effect)
         {
-            if (effectsDict.TryGetValue(def, out effect) && effect.enabled)
+            if (key != null && effectsDict.TryGetValue(key, out effect) && effect.enabled)
             {
                 return true;
             }

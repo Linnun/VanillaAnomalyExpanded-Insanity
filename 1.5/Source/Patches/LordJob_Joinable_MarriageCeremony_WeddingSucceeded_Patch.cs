@@ -14,11 +14,7 @@ namespace VAEInsanity
             for (int i = 0; i < ownedPawns.Count; i++)
             {
                 Pawn pawn = ownedPawns[i];
-                var need = pawn.needs.TryGetNeed<Need_Sanity>();
-                if (need != null)
-                {
-                    need.GainSanity(0.05f, "VAEI_Attending".Translate(GatheringDefOf.MarriageCeremony.label));
-                }
+                pawn.SanityGain(VAEInsanityModSettings.marriageCeremonyValue, "VAEI_Attending".Translate(GatheringDefOf.MarriageCeremony.label));
             }
         }
     }

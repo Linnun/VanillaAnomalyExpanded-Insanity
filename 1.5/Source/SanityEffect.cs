@@ -43,7 +43,7 @@ namespace VAEInsanity
         {
             Scribe_Values.Look(ref sanityValue, "sanityValue");
             Scribe_Values.Look(ref description, "description");
-            Scribe_Values.Look(ref isSingleSlider, "shouldBeSlider");
+            Scribe_Values.Look(ref isSingleSlider, "isSingleSlider");
             Scribe_Values.Look(ref enabled, "enabled", true);
         }
     }

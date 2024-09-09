@@ -43,10 +43,24 @@ namespace VAEInsanity
             Label(new Rect(pos.x, pos.y, widthWithoutScrollBar, 24), "VAEI_SanityLossEffects".Translate());
             pos.y += 24;
 
-            // Draw the twisted meat slider WITHOUT offset for label
-            DrawCheckboxAndSlider(ref VAEInsanityModSettings.twistedMeatValue.enabled,
-                ref VAEInsanityModSettings.twistedMeatValue.sanityValue,
-                ref pos, widthWithoutScrollBar, "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f);
+            DrawSection(ref pos, widthWithoutScrollBar, labelXOffsetForListItems, "VAEI_General".Translate(),
+                (ref Vector2 position, float width, float labelOffset) =>
+                {
+                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.twistedMeatValue.enabled,
+                        ref VAEInsanityModSettings.twistedMeatValue.sanityValue,
+                        ref position, width, "VEAI_EatingTwistedMeat".Translate(), -0.1f, -0.001f,
+                        labelOffset);
+
+                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.marriageCeremonyValue.enabled,
+                        ref VAEInsanityModSettings.marriageCeremonyValue.sanityValue,
+                        ref position, width, "VAEI_MarriageCeremony".Translate(), 0f, 0.1f,
+                        labelOffset);
+
+                    DrawCheckboxAndSlider(ref VAEInsanityModSettings.partyValue.enabled,
+                        ref VAEInsanityModSettings.partyValue.sanityValue,
+                        ref position, width, "VAEI_Party".Translate(), 0f, 0.1f,
+                        labelOffset);
+                }, 3);
 
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_InteractionEffects".Translate(), VAEInsanityModSettings.interactionEffects, labelXOffsetForListItems, -0.1f, 0.1f);
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_NonDisturbingInitiatorEffects".Translate(), VAEInsanityModSettings.nonDisturbingInitiatorEffects, labelXOffsetForListItems, 0f, 0.1f);
@@ -59,22 +73,56 @@ namespace VAEInsanity
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_ChanterEffects".Translate(), VAEInsanityModSettings.chanterEffects, labelXOffsetForListItems, -0.1f, -0.001f);
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_SuppressingEntities".Translate(), VAEInsanityModSettings.suppressingEntities, labelXOffsetForListItems, -0.1f, -0.001f);
             DrawList(ref pos, widthWithoutScrollBar, "VAEI_StudyingEntities".Translate(), VAEInsanityModSettings.studyingEntities, labelXOffsetForListItems, -0.1f, -0.001f);
-            DrawList(ref pos, widthWithoutScrollBar, "VAEI_KillingEntities".Translate(), VAEInsanityModSettings.killingEntities, labelXOffsetForListItems, 0f, 0.1f);
+            DrawList(ref pos, widthWithoutScrollBar, "VAEI_KillingEntities".Translate(),
+                VAEInsanityModSettings.killingEntities, labelXOffsetForListItems, 0f, 0.1f, listHeightOffset: 24 * 2);
+            pos.y -= 10;
+            DrawCheckboxAndSlider(ref VAEInsanityModSettings.killingShamblerValue.enabled,
+                ref VAEInsanityModSettings.killingShamblerValue.sanityValue,
+                ref pos, widthWithoutScrollBar, "VAEI_KillingShambler".Translate(), 0f, 0.1f, labelXOffsetForListItems);
+
+            DrawCheckboxAndSlider(ref VAEInsanityModSettings.killingNociosphereValue.enabled,
+                ref VAEInsanityModSettings.killingNociosphereValue.sanityValue,
+                ref pos, widthWithoutScrollBar, "VAEI_KillingNociosphere".Translate(), 0f, 0.1f, labelXOffsetForListItems);
+            pos.y += 10;
+
 
             sectionScrollHeight = pos.y - inRect.y;
             EndScrollView();
         }
 
+        private delegate void DrawSettingsDelegate(ref Vector2 pos, float widthWithoutScrollBar, float labelXOffsetForListItems);
+
+        private void DrawSection(ref Vector2 pos, float widthWithoutScrollBar, float labelXOffsetForListItems, 
+            string sectionLabel, DrawSettingsDelegate drawSettingsFunc, int elementsCount)
+        {
+            float elementHeight = 24f; // Height of each element
+            float sectionHeight = elementsCount * elementHeight + 10; // Dynamically calculate height
+
+            // Draw the section label
+            Label(new Rect(pos.x, pos.y, widthWithoutScrollBar, 24), sectionLabel);
+            pos.y += 24;
+
+            // Draw the section for sliders or other UI elements
+            Rect sectionRect = new Rect(pos.x, pos.y, widthWithoutScrollBar, sectionHeight);
+            DrawMenuSection(sectionRect);
+            pos.y += 5;
+
+            // Call the passed-in function to draw the settings for this section
+            drawSettingsFunc(ref pos, widthWithoutScrollBar, labelXOffsetForListItems);
+
+            pos.y += 10; // Space after the section
+        }
+
         // Updated DrawList to accept min and max values for the sliders
         private void DrawList<T>(ref Vector2 pos, float width, string sectionLabel, Dictionary<T, SanityEffect> list,
-            float labelXOffset, float minSliderValue, float maxSliderValue) where T : Def
+            float labelXOffset, float minSliderValue, float maxSliderValue, float listHeightOffset = 0) where T : Def
         {
             // Draw section label
             Label(new Rect(pos.x, pos.y, width, 24), sectionLabel);
             pos.y += 24;
 
             // Calculate the height of the list section based on the number of items
-            float listHeight = list.Count * 24 + 10;
+            float listHeight = (list.Count * 24 + 10) + listHeightOffset;
 
             // Define the menu section rect and draw it
             Rect listRect = new Rect(pos.x, pos.y, width, listHeight);
@@ -274,6 +322,11 @@ namespace VAEInsanity
     {
         public static bool selfHarmEnabled = false;
         public static SanityEffect twistedMeatValue = new SanityEffect(-0.01f);
+        public static SanityEffect marriageCeremonyValue = new SanityEffect(0.05f);
+        public static SanityEffect partyValue = new SanityEffect(0.02f);
+        public static SanityEffect killingShamblerValue = new SanityEffect(0.01f);
+        public static SanityEffect killingNociosphereValue = new SanityEffect(0.05f);
+        public static SanityEffect meditatingValue = new SanityEffect(0.02f);
 
         public static Dictionary<ThingDef, SanityEffect> suppressingEntities = new();
         public static Dictionary<ThingDef, SanityEffect> killingEntities = new();
@@ -296,6 +349,8 @@ namespace VAEInsanity
             base.ExposeData();
             Scribe_Values.Look(ref selfHarmEnabled, "selfHarmEnabled");
             Scribe_Deep.Look(ref twistedMeatValue, "twistedMeatValue");
+            Scribe_Deep.Look(ref marriageCeremonyValue, "marriageCeremonyValue");
+            Scribe_Deep.Look(ref partyValue, "partyValue");
 
             Scribe_Collections.Look(ref suppressingEntities, "suppressingEntities", LookMode.Def, LookMode.Deep);
             Scribe_Collections.Look(ref killingEntities, "killingEntities", LookMode.Def, LookMode.Deep);
@@ -330,12 +385,15 @@ namespace VAEInsanity
                 invokerEffects ??= new();
                 targetEffects ??= new();
                 chanterEffects ??= new();
+                twistedMeatValue ??= new SanityEffect(-0.01f);
+                marriageCeremonyValue ??= new SanityEffect(0.05f);
+                partyValue ??= new SanityEffect(0.02f);
+                killingShamblerValue ??= new SanityEffect(0.01f);
+                killingNociosphereValue ??= new SanityEffect(0.05f);
+                meditatingValue ??= new SanityEffect(0.02f);
 
-                if (twistedMeatValue is null)
-                {
-                    twistedMeatValue = new SanityEffect(-0.01f);
-                }
             }
         }
     }
+
 }
