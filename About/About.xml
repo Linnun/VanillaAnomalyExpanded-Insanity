@@ -31,7 +31,11 @@
 		<li>Ludeon.RimWorld.Anomaly</li>
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 	</loadAfter>
-	<description>
-Todo
-	</description>
+	<description>Vanilla Anomaly Expanded - Sanity introduces a new gameplay mechanic centered around a "Sanity" system, in many ways similar to Sanity present in other video games, representing your characters' mental and emotional connection to human concerns. You’ll need to manage the sanity levels of your colonists, as low sanity leads to detachment from human priorities, and may eventually lead to inhumanization.
+
+Your gameplay loop will be enriched with the sanity system, as over time you will start to notice the effects of your actions - and at some point, it may become difficult to revert the changes these effects cause. Whether you decide whether to fight evil entities, which restores sanity, or study them, which drains it, you will notice first-hand what the horrors can unleash.
+
+Various events, social interactions, and mental states will trigger as sanity changes, providing you with deeper role-playing options. Characters with low sanity may descend into madness, leading to harmful behaviors, but they might also become inhumanized - which is not necessarily all bad. Worst case scenario, you can work towards rehumanizing them!
+
+Sanity added by this mod has nothing to do with mood or emotional state of your colonists. It’s not related to losing family members, eating nutrient paste meals, being on mental breaks etc. Sanity represents the influence of the void, and is only lost if you stare at the horror for too long. It’s meant to be a strategic resource that takes years to deplete and even longer to replenish - but keep an eye on it, and act accordingly if you see Sanity dropping rapidly.</description>
 </ModMetaData>
