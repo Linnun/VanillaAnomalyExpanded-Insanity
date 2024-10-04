@@ -7,8 +7,7 @@ namespace VAEInsanity
     {
         public override float CommonalityFor(Pawn pawn, bool moodCaused = false)
         {
-            Need_Sanity sanity = pawn.needs?.TryGetNeed<Need_Sanity>();
-            if (sanity == null)
+            if (pawn.TryGetSanity(out var sanity) is false)
             {
                 return 0f;
             }

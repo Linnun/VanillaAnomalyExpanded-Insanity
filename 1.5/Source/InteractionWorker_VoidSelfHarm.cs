@@ -31,7 +31,7 @@ namespace VAEInsanity
                         damage.SetAllowDamagePropagation(false);
                         pawn.TakeDamage(damage);
                     }
-                    pawn.needs.mood.thoughts.memories.TryGainMemory(DefsOf.VAEI_VoidHarmed);
+                    pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(DefsOf.VAEI_VoidHarmed);
                 }
             }
         }

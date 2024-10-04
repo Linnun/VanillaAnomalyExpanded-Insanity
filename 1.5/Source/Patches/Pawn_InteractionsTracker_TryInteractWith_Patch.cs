@@ -9,8 +9,7 @@ namespace VAEInsanity
     {
         public static void Prefix(Pawn_InteractionsTracker __instance, ref InteractionDef intDef)
         {
-            var sanity = __instance.pawn.needs.TryGetNeed<Need_Sanity>();
-            if (sanity == null)
+            if (__instance.pawn.TryGetSanity(out var sanity) is false)
             {
                 return;
             }

@@ -7,12 +7,11 @@ namespace VAEInsanity
     {
         public override ThoughtState CurrentStateInternal(Pawn p)
         {
-            if (p.Inhumanized())
+            if (p.Inhumanized() || p.TryGetSanity(out var need) is false)
             {
                 return ThoughtState.Inactive;
             }
-            var need = p.needs.TryGetNeed<Need_Sanity>();
-            if (need is null || need.CurLevel > 0.75f)
+            if (need.CurLevel > 0.75f)
             {
                 return ThoughtState.Inactive;
             }

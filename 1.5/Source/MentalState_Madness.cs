@@ -111,10 +111,13 @@ namespace VAEInsanity
             }, 0.66f));
             actions.Add((delegate
             {
-                pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOf.Catharsis);
+                pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(ThoughtDefOf.Catharsis);
                 if (VAEInsanityModSettings.recoveringFromMadness.TryGetEffect(out var effect))
                 {
-                    pawn.needs.TryGetNeed<Need_Sanity>().GainSanity(effect, "VEAI_RecoveringFromMadness".Translate());
+                    if (pawn.TryGetSanity(out var sanity))
+                    {
+                        sanity.GainSanity(effect, "VEAI_RecoveringFromMadness".Translate());
+                    }
                 }
                 Find.LetterStack.ReceiveLetter("VAEI_Recovered".Translate(pawn.Named("PAWN")),
                     "VAEI_RecoveredDesc".Translate(pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);

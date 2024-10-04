@@ -11,47 +11,39 @@ namespace VAEInsanity
 
         public override void TransformValue(StatRequest req, ref float val)
         {
-            if (req.HasThing && req.Thing is Pawn pawn)
+            if (req.HasThing && req.Thing is Pawn pawn && pawn.TryGetSanity(out var sanity))
             {
-                Need_Sanity sanity = pawn.needs.TryGetNeed<Need_Sanity>();
-                if (sanity != null)
-                {
-                    float factor = GetFactor(sanity.CurLevel);
-                    val *= factor;
-                    val += GetOffset(pawn, sanity.CurLevel);
-                }
+                float factor = GetFactor(sanity.CurLevel);
+                val *= factor;
+                val += GetOffset(pawn, sanity.CurLevel);
             }
         }
 
         public override string ExplanationPart(StatRequest req)
         {
-            if (req.HasThing && req.Thing is Pawn pawn)
+            if (req.HasThing && req.Thing is Pawn pawn && pawn.TryGetSanity(out var sanity))
             {
-                Need_Sanity sanity = pawn.needs.TryGetNeed<Need_Sanity>();
-                if (sanity != null)
+                float curLevel = sanity.CurLevel;
+                float factor = GetFactor(curLevel);
+                float offset = GetOffset(pawn, curLevel);
+                string explanation = "";
+
+                if (factor != 1f)
                 {
-                    float curLevel = sanity.CurLevel;
-                    float factor = GetFactor(curLevel);
-                    float offset = GetOffset(pawn, curLevel);
-                    string explanation = "";
-
-                    if (factor != 1f)
-                    {
-                        explanation += "VAEI_SanityFactorExplanation".Translate(curLevel.ToStringPercent(),
-                            factor.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Factor));
-                    }
-
-                    if (offset != 0f)
-                    {
-                        if (!string.IsNullOrEmpty(explanation))
-                        {
-                            explanation += "\n";
-                        }
-                        explanation += "VAEI_SanityOffsetExplanation".Translate(curLevel.ToStringPercent(),
-                            offset.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Offset));
-                    }
-                    return explanation;
+                    explanation += "VAEI_SanityFactorExplanation".Translate(curLevel.ToStringPercent(),
+                        factor.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Factor));
                 }
+
+                if (offset != 0f)
+                {
+                    if (!string.IsNullOrEmpty(explanation))
+                    {
+                        explanation += "\n";
+                    }
+                    explanation += "VAEI_SanityOffsetExplanation".Translate(curLevel.ToStringPercent(),
+                        offset.ToStringByStyle(parentStat.ToStringStyleUnfinalized, ToStringNumberSense.Offset));
+                }
+                return explanation;
             }
             return null;
         }

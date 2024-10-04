@@ -29,8 +29,7 @@ namespace VAEInsanity
 
         public static float ModifyKnowledgeValue(float originalValue, Pawn reader)
         {
-            Need_Sanity sanity = reader.needs.TryGetNeed<Need_Sanity>();
-            if (sanity == null)
+            if (reader.TryGetSanity(out var sanity) is false)
             {
                 return originalValue;
             }

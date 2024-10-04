@@ -13,7 +13,7 @@ namespace VAEInsanity
             {
                 if (otherPawn != recipient && otherPawn != initiator && otherPawn.relations.OpinionOf(recipient) != 0)
                 {
-                    otherPawn.needs.mood.thoughts.memories.TryGainMemory(DefsOf.VAEI_Suspicious, recipient);
+                    otherPawn.needs?.mood?.thoughts?.memories.TryGainMemory(DefsOf.VAEI_Suspicious, recipient);
                 }
             }
         }

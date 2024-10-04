@@ -11,10 +11,9 @@ namespace VAEInsanity
         {
             if (dinfo.HasValue && dinfo.Value.Instigator is Pawn instigator)
             {
-                if (__instance.IsShambler)
+                if (__instance.IsShambler && instigator.TryGetSanity(out var need))
                 {
-                    var need = instigator.needs?.TryGetNeed<Need_Sanity>();
-                    if (need != null && need.killedShamblers.Contains(__instance) is false
+                    if (need.killedShamblers.Contains(__instance) is false
                         && VAEInsanityModSettings.killingShamblerValue.TryGetEffect(out var effect))
                     {
                         need.killedShamblers.Add(__instance);

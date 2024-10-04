@@ -108,26 +108,36 @@ namespace VAEInsanity
             return false;
         }
 
+        public static bool TryGetSanity(this Pawn pawn, out Need_Sanity need)
+        {
+            need = pawn?.needs?.TryGetNeed<Need_Sanity>();
+            return need != null;
+        }
+
         [DebugAction("Pawns", "Sanity +10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]
         private static void SanityPlus10(Pawn p)
         {
-            var need = p.needs.TryGetNeed<Need_Sanity>();
-            need.GainSanity(0.1f, "using DEV: Sanity +10%");
-            DebugActionsUtility.DustPuffFrom(p);
+            if (p.TryGetSanity(out var need))
+            {
+                need.GainSanity(0.1f, "using DEV: Sanity +10%");
+                DebugActionsUtility.DustPuffFrom(p);
+            }
+
         }
 
         [DebugAction("Pawns", "Sanity -10%", false, false, false, false, 0, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap, requiresAnomaly = true, displayPriority = -1000)]
         private static void SanityMinus10(Pawn p)
         {
-            var need = p.needs.TryGetNeed<Need_Sanity>();
-            need.GainSanity(-0.1f, "using DEV: Sanity -10%");
-            DebugActionsUtility.DustPuffFrom(p);
+            if (p.TryGetSanity(out var need))
+            {
+                need.GainSanity(-0.1f, "using DEV: Sanity -10%");
+                DebugActionsUtility.DustPuffFrom(p);
+            }
         }
 
         public static void SanityGain(this Pawn pawn, SanityEffect effect, string reason)
         {
-            var need = pawn?.needs?.TryGetNeed<Need_Sanity>();
-            if (need != null)
+            if (pawn.TryGetSanity(out var need))
             {
                 if (effect.description.NullOrEmpty() is false)
                 {
@@ -139,8 +149,7 @@ namespace VAEInsanity
 
         public static void SanityGain(this Pawn pawn, float sanityGain, string reason)
         {
-            var need = pawn?.needs?.TryGetNeed<Need_Sanity>();
-            if (need != null)
+            if (pawn.TryGetSanity(out var need))
             {
                 need.GainSanity(sanityGain, reason);
             }
@@ -148,8 +157,7 @@ namespace VAEInsanity
 
         public static void SanityGainContinuously(this Pawn pawn, float sanityGain, string reason)
         {
-            var need = pawn?.needs?.TryGetNeed<Need_Sanity>();
-            if (need != null)
+            if (pawn.TryGetSanity(out var need))
             {
                 var lastRecord = need.records.Last();
                 if (lastRecord.reason == reason)

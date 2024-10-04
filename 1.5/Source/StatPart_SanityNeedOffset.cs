@@ -32,8 +32,7 @@ namespace VAEInsanity
         {
             explanation = new StringBuilder();
             val = 0f;
-            var sanity = pawn?.needs?.TryGetNeed<Need_Sanity>();
-            if (sanity != null)
+            if (pawn.TryGetSanity(out var sanity))
             {
                 var currentSanityLevel = sanity.CurLevel;
 

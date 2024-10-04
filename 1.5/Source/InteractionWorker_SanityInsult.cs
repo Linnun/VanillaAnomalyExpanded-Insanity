@@ -7,8 +7,7 @@ namespace VAEInsanity
     {
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            var sanity = initiator.needs.TryGetNeed<Need_Sanity>();
-            if (sanity != null)
+            if (initiator.TryGetSanity(out var sanity))
             {
                 if (sanity.CurLevel <= 0.5f)
                 {

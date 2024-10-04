@@ -28,7 +28,7 @@ namespace VAEInsanity
                     Thought_Memory thought_Memory = item.GiveObservedThought(__instance.pawn);
                     if (thought_Memory != null)
                     {
-                        __instance.pawn.needs.mood.thoughts.memories.TryGainMemory(thought_Memory);
+                        __instance.pawn.needs?.mood?.thoughts?.memories.TryGainMemory(thought_Memory);
                     }
                 }
             }

@@ -9,12 +9,11 @@ namespace VAEInsanity
     {
         public static void Postfix(Hediff __instance, DamageInfo? dinfo)
         {
-            if (__instance.pawn.RaceProps.Humanlike)
+            if (__instance.pawn.RaceProps.Humanlike && __instance.pawn.TryGetSanity(out var sanity))
             {
                 CheckAndAddTrait(__instance, HediffDefOf.Inhumanized, DefsOf.VAEI_Inhumanized);
                 CheckAndAddTrait(__instance, HediffDefOf.VoidTouched, DefsOf.VAEI_VoidTouched);
-                var sanity = __instance.pawn.needs.TryGetNeed<Need_Sanity>();
-                if (sanity?.rehumanizedTrait != null)
+                if (sanity.rehumanizedTrait != null)
                 {
                     var trait = __instance.pawn.story.traits.GetTrait(sanity.rehumanizedTrait);
                     if (trait != null)

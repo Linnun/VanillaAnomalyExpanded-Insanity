@@ -12,8 +12,7 @@ namespace VAEInsanity
 
         public Thought_Memory GiveObservedThought(Pawn observer)
         {
-            var sanity = observer.needs.TryGetNeed<Need_Sanity>();
-            if (sanity is null)
+            if (observer.TryGetSanity(out var sanity) is false)
             {
                 return null;
             }

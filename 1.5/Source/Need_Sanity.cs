@@ -212,7 +212,7 @@ namespace VAEInsanity
                         var inhumanized = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Inhumanized);
                         if (inhumanized != null)
                         {
-                            pawn.needs.mood.thoughts.memories.TryGainMemory(DefsOf.VAEI_Rehumanized);
+                            pawn.needs?.mood?.thoughts?.memories.TryGainMemory(DefsOf.VAEI_Rehumanized);
                             pawn.health.RemoveHediff(inhumanized);
                             var rehumanizedTraits = DefDatabase<SanityEffectsDef>.AllDefs.SelectMany(x => x.rehumanizationTraits ?? new List<TraitDef>()).Distinct().ToList();
                             rehumanizedTrait = rehumanizedTraits.Where(x => pawn.HasTrait(x) is false).RandomElement();
