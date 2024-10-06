@@ -159,8 +159,8 @@ namespace VAEInsanity
         {
             if (pawn.TryGetSanity(out var need))
             {
-                var lastRecord = need.records.Last();
-                if (lastRecord.reason == reason)
+                var lastRecord = need.records.LastOrDefault();
+                if (lastRecord != null && lastRecord.reason == reason)
                 {
                     lastRecord.UpdateRecord(sanityGain);
                 }
