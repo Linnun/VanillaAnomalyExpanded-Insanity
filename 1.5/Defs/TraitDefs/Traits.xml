@@ -8,7 +8,7 @@
 		<degreeDatas>
 			<li>
 				<label>inhumanized</label>
-				<description>{PAWN_nameDef} text.todo</description>
+				<description>{PAWN_nameDef}'s mind is dominated by the psychic patterns of the void. They are completely disconnected from human concerns of family, friendship, and love. Their experience of reality is distant and muted, guided by the psychic rhythm of a dark hyperintelligence.</description>
 				<statOffsets>
 					<VAEI_SanityGainPerDay>-0.01</VAEI_SanityGainPerDay>
 				</statOffsets>
@@ -22,7 +22,7 @@
 		<degreeDatas>
 			<li>
 				<label>void touched</label>
-				<description>{PAWN_nameDef} text.todo</description>
+				<description>{PAWN_nameDef} has seen the depths of the void and drank from its essence. It lives inside them still, guiding their actions and twisting their flesh. It has turned their hair brittle and white. They no longer need sleep or comfort. The void provides for them.</description>
 				<statFactors>
 					<VAEI_SanityGainMultiplier>0.1</VAEI_SanityGainMultiplier>
 				</statFactors>
