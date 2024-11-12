@@ -44,7 +44,7 @@
 			</defaultOutfitTags>
 			<canBeDesiredForIdeo>false</canBeDesiredForIdeo>
 			<tags>
-				<li>Medieval</li>
+				<li>VAE_Gag</li>
 			</tags>
 			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
 		</apparel>
@@ -114,7 +114,7 @@ Sacrificial
         </defaultOutfitTags>
         <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
         <tags>
-            <li>Medieval</li>
+            <li>VAE_Straitjacket</li>
         </tags>
         <developmentalStageFilter>Adult</developmentalStageFilter>
     </apparel>
