@@ -1,0 +1,4 @@
+E:\Steam\steamapps\common\RimWorld\Mods\VanillaAnomalyExpanded-Insanity\1.5\Assemblies\VAEInsanity.dll
+E:\Steam\steamapps\common\RimWorld\Mods\VanillaAnomalyExpanded-Insanity\1.5\Source\obj\Debug\VAEInsanity.csproj.AssemblyReference.cache
+E:\Steam\steamapps\common\RimWorld\Mods\VanillaAnomalyExpanded-Insanity\1.5\Source\obj\Debug\VAEInsanity.csproj.CoreCompileInputs.cache
+E:\Steam\steamapps\common\RimWorld\Mods\VanillaAnomalyExpanded-Insanity\1.5\Source\obj\Debug\VAEInsanity.dll

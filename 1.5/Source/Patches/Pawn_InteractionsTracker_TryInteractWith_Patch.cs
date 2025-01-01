@@ -69,7 +69,7 @@ namespace VAEInsanity
             {
                 recipient.SanityGain(effect, "VAEI_Interaction".Translate(intDef.label, __instance.pawn.Named("PAWN")));
             }
-            if (__instance.pawn.story.IsDisturbing)
+            if (__instance.pawn.story?.IsDisturbing==true)
             {
                 if (VAEInsanityModSettings.disturbingInitiatorEffects.TryGetEffect(intDef, out var disturbing))
                 {

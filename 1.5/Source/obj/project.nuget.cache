@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "kl4Ek7T3SbHIs3i5u3IyGV5yZBluqj3Y0RBxxjqnLunQUIlb3PQAkGVfE3p8cWcvSgx8KVJ0vb0ZBrxVXTwl6Q==",
+  "success": true,
+  "projectFilePath": "E:\\Steam\\steamapps\\common\\RimWorld\\Mods\\VanillaAnomalyExpanded-Insanity\\1.5\\Source\\VAEInsanity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\krafs.publicizer\\2.3.0\\krafs.publicizer.2.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\krafs.rimworld.ref\\1.5.4297\\krafs.rimworld.ref.1.5.4297.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\lib.harmony\\2.3.3\\lib.harmony.2.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}
